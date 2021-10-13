@@ -14,7 +14,7 @@ public class FieldOfViewEditor : Editor
         Handles.DrawWireArc(fow.transform.position, Vector3.forward, Vector3.right, 360, fow.viewRadius);
         Vector3 viewAngleA = fow.DirectionFromAngle(-fow.viewAngle / 2, false);
         Vector3 viewAngleB = fow.DirectionFromAngle(fow.viewAngle / 2, false);
-        
+
         Handles.DrawLine(fow.transform.position, fow.transform.position + viewAngleA * fow.viewRadius);
         Handles.DrawLine(fow.transform.position, fow.transform.position + viewAngleB * fow.viewRadius);
         

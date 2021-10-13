@@ -11,16 +11,20 @@ public class CreatureMovement : MonoBehaviour
     
     [Header("Debug")]
     [SerializeField] private Transform target;
-    [SerializeField] private Vector3 targetPosition;
+    [SerializeField] public Vector3 targetPosition;
     [SerializeField] private Collider2D collider;
+    [SerializeField] private Rigidbody2D rigidbody2D;
+    
 
     private void Start()
     {
         if (collider == null)
             collider = GetComponent<Collider2D>();
+        if (rigidbody2D == null)
+            rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         CheckProximity();
     }
@@ -37,9 +41,9 @@ public class CreatureMovement : MonoBehaviour
     private void MoveCreature()
     {
         var direction = targetPosition - transform.position;
-        //TODO: make the object move forward and have it turn according to the rotation speed
-        //TODO: add a accelerationSpeed topped at the movementSpeed and have it deaccelerate to land on the target position
+        //TODO: Make the speed not be affected by distance
+        //TODO: add an accelerationSpeed topped at the movementSpeed and have it deaccelerate to land on the target position
 
-        transform.position += direction.normalized * (movementSpeed * Time.deltaTime);
+        rigidbody2D.MovePosition(transform.position + direction.normalized * (movementSpeed * Time.deltaTime));
     }
 }

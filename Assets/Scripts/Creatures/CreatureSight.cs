@@ -13,8 +13,14 @@ public class CreatureSight : MonoBehaviour
     
     public List<Transform> visibleTargets = new List<Transform>();
 
+    [Header("Debug")]
+    public CreatureMovement creatureMovement;
+
     private void Start()
     {
+        if (creatureMovement == null)
+            creatureMovement = GetComponent<CreatureMovement>();
+        
         StartCoroutine(FindTargetsWithDelay(.2f));
     }
 
@@ -26,7 +32,7 @@ public class CreatureSight : MonoBehaviour
             FindVisibleTargets();
         }
     }
-    
+
     private void FindVisibleTargets()
     {
         visibleTargets.Clear();
@@ -36,7 +42,7 @@ public class CreatureSight : MonoBehaviour
         {
             Transform target = targetsInViewRadius[i].transform;
             Vector2 directionToTarget = (target.position - transform.position).normalized;
-            if (Vector2.Angle(transform.up, directionToTarget) < viewAngle / 2)
+            if (Vector2.Angle(creatureMovement.targetPosition - transform.position, directionToTarget) < viewAngle / 2)
             {
                 float distanceToTarget = Vector2.Distance(transform.position, target.position);
 
@@ -54,6 +60,12 @@ public class CreatureSight : MonoBehaviour
         {
             angleInDegrees -= transform.eulerAngles.z;
         }
+
+        if (creatureMovement.targetPosition.x - transform.position.x > 0)
+            angleInDegrees += Vector2.Angle(creatureMovement.targetPosition - transform.position, transform.up);
+        else if (creatureMovement.targetPosition.x - transform.position.x < 0)
+            angleInDegrees -= Vector2.Angle(creatureMovement.targetPosition - transform.position, transform.up);
+
         return new Vector2(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 }
