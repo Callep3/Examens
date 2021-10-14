@@ -24,7 +24,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestCreature.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TestCreature.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureCharacteristics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureCharacteristics.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureBehaviour.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +35,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Idle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureHearing.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/Drawer_Attribute_ReadOnly.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/FieldOfViewEditor.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -50,6 +53,14 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureHearing.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Editor/FieldOfHearingEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureCharacteristics.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Editor/Attribute_ReadOnly.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Editor/Attributes/Attribute_ReadOnly.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Attributes/Attribute_ReadOnly.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Editor/Drawer_Attribute_ReadOnly.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Idle.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStateMachine.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" />
       </list>
     </option>
   </component>
@@ -94,7 +105,7 @@
       <updated>1634041006578</updated>
       <workItem from="1634041021092" duration="7689000" />
       <workItem from="1634119468928" duration="5807000" />
-      <workItem from="1634203026373" duration="4598000" />
+      <workItem from="1634203026373" duration="7661000" />
     </task>
     <servers />
   </component>
@@ -116,5 +127,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="794" y="233" key="RiderGenerateDialog" timestamp="1634223842967">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="794" y="233" key="RiderGenerateDialog/0.0.1920.1080/1920.0.1920.1040@0.0.1920.1080" timestamp="1634223842967" />
   </component>
 </project>

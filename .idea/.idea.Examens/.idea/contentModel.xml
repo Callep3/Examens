@@ -8,14 +8,23 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="Attributes" t="Include">
+            <e p="Attribute_ReadOnly.cs" t="Include" />
+          </e>
           <e p="Creatures" t="Include">
             <e p="CreatureBehaviour.cs" t="Include" />
             <e p="CreatureCharacteristics.cs" t="Include" />
             <e p="CreatureHearing.cs" t="Include" />
             <e p="CreatureMovement.cs" t="Include" />
             <e p="CreatureSight.cs" t="Include" />
+            <e p="CreatureStateMachine.cs" t="Include" />
+            <e p="CreatureStates" t="Include">
+              <e p="Grazing.cs" t="Include" />
+              <e p="Idle.cs" t="Include" />
+            </e>
           </e>
           <e p="Editor" t="Include">
+            <e p="Drawer_Attribute_ReadOnly.cs" t="Include" />
             <e p="FieldOfHearingEditor.cs" t="Include" />
             <e p="FieldOfViewEditor.cs" t="Include" />
           </e>
