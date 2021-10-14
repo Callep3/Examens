@@ -14,7 +14,6 @@ public class CreatureMovement : MonoBehaviour
     [SerializeField] public Vector3 targetPosition;
     [SerializeField] private Collider2D collider;
     [SerializeField] private Rigidbody2D rigidbody2D;
-    
 
     private void Start()
     {
@@ -43,6 +42,8 @@ public class CreatureMovement : MonoBehaviour
         var direction = targetPosition - transform.position;
         //TODO: Make the speed not be affected by distance
         //TODO: add an accelerationSpeed topped at the movementSpeed and have it deaccelerate to land on the target position
+        Debug.Log(transform.position);
+        Debug.Log(direction.normalized);
 
         rigidbody2D.MovePosition(transform.position + direction.normalized * (movementSpeed * Time.deltaTime));
     }
