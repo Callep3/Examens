@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 7687364152048832414}
   - component: {fileID: 7687364152048832415}
   - component: {fileID: 403211876386475894}
+  - component: {fileID: 5419955950567161343}
   - component: {fileID: 7687364152048832413}
   - component: {fileID: 7687364152048832408}
   - component: {fileID: 1354705271}
@@ -166,6 +167,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 028226c85865d3f4ca28f7f52167142d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  food: 0
+  maxFood: 100
+  water: 0
+  maxWater: 100
+  energy: 0
+  maxEnergy: 100
+  health: 0
+  maxHealth: 100
+  herbivore: 0
+  carnivore: 0
+--- !u!114 &5419955950567161343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7687364152048832402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc637eb91fb616445ab7ddc2d6622b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &7687364152048832413
