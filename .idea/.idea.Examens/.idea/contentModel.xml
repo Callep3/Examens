@@ -9,6 +9,7 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="Creatures" t="Include">
+            <e p="CreatureCharacteristics.cs" t="Include" />
             <e p="CreatureHearing.cs" t="Include" />
             <e p="CreatureMovement.cs" t="Include" />
             <e p="CreatureSight.cs" t="Include" />

@@ -22,8 +22,7 @@
     <list default="true" id="a8c5eb78-2134-4aa4-b0ab-e4b8e8f68141" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestCreature.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TestCreature.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +47,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureHearing.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Editor/FieldOfHearingEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureCharacteristics.cs" />
       </list>
     </option>
   </component>
@@ -92,7 +92,7 @@
       <updated>1634041006578</updated>
       <workItem from="1634041021092" duration="7689000" />
       <workItem from="1634119468928" duration="5807000" />
-      <workItem from="1634203026373" duration="1651000" />
+      <workItem from="1634203026373" duration="3215000" />
     </task>
     <servers />
   </component>
