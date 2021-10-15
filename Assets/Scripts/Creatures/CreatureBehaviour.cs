@@ -8,6 +8,7 @@ public class CreatureBehaviour : MonoBehaviour
 {
     private StateMachine stateMachine;
     private CreatureCharacteristics creatureCharacteristics;
+    private IState grazing;
 
     [Header("Debug")] 
     [Attribute_ReadOnly] public string currentState;
@@ -15,7 +16,9 @@ public class CreatureBehaviour : MonoBehaviour
     void Start()
     {
         stateMachine = new StateMachine();
+        grazing = new Grazing(gameObject, stateMachine);
         
+        stateMachine.Initialize(grazing);
         //TODO: Initialize State dependent on characteristics
     }
     

@@ -1146,6 +1146,10 @@ PrefabInstance:
       propertyPath: herbivore
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 403211876386475894, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
+      propertyPath: eatingSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7687364152048832402, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
       propertyPath: m_Name
       value: TestCreature
