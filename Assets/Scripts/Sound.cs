@@ -13,6 +13,13 @@ public class Sound : MonoBehaviour
 
     private void OnEnable()
     {
+        if (volume <= 0)
+            Debug.LogError("Volume is not set or is either negative or zero");
+        if (lifespan <= 0)
+            Debug.LogError("Lifespan is not set or is either negative or zero");
+        if (creatureCharacteristics == null)
+            Debug.LogError("No referenced creatures characteristics found");
+        
         transform.localScale = Vector3.zero;
         maxSize = volume;
     }

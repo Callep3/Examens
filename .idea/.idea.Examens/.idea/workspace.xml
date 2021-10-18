@@ -20,14 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8c5eb78-2134-4aa4-b0ab-e4b8e8f68141" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestCreature.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TestCreature.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureHearing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureHearing.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureCharacteristics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureCharacteristics.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Sound.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,11 +58,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Idle.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureCharacteristics.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureHearing.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Editor/SoundEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Sound.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureCharacteristics.cs" />
       </list>
     </option>
   </component>
@@ -114,7 +109,7 @@
       <workItem from="1634119468928" duration="5807000" />
       <workItem from="1634203026373" duration="7729000" />
       <workItem from="1634287144614" duration="4831000" />
-      <workItem from="1634554103215" duration="3123000" />
+      <workItem from="1634554103215" duration="3411000" />
     </task>
     <servers />
   </component>

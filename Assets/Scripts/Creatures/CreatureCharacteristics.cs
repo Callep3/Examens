@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class CreatureCharacteristics : MonoBehaviour
 {
-    [Header("Stats")]
+    [Header("Stats")] 
+    public string creatureTypeName;
+    [Space]
     public float food;
     public float maxFood = 100f;
     public float eatingSpeed;
