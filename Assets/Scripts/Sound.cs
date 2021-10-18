@@ -9,7 +9,6 @@ public class Sound : MonoBehaviour
     
     public float volume;
     public float lifespan;
-    private float maxSize;
 
     private void OnEnable()
     {
@@ -19,9 +18,6 @@ public class Sound : MonoBehaviour
             Debug.LogError("Lifespan is not set or is either negative or zero");
         if (creatureCharacteristics == null)
             Debug.LogError("No referenced creatures characteristics found");
-        
-        transform.localScale = Vector3.zero;
-        maxSize = volume;
     }
 
     private void Update()
@@ -32,22 +28,7 @@ public class Sound : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
-
         lifespan -= Time.deltaTime;
-        
-        var localScale = transform.localScale;
-        var newScale = new Vector3(
-            localScale.x + 1f * Time.deltaTime, 
-            localScale.y + 1f * Time.deltaTime, 
-            localScale.z);
-
-        if (newScale.x > maxSize)
-        {
-            transform.localScale = Vector3.zero;
-            return;
-        }
-        
-        transform.localScale = newScale;
     }
     
     //TODO: Object pool the sound prefab
