@@ -33,7 +33,8 @@ public class CreatureHearing : MonoBehaviour
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {
             Transform target = targetsInViewRadius[i].transform;
-
+            
+            //TODO: check if creature can hear the sound dependent on a calculation of the creatures sensitivity to the distance to the sound to the sounds volume
             heardTargets.Add(target);
         }
     }

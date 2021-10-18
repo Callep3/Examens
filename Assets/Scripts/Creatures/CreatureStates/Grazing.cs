@@ -13,6 +13,7 @@ public class Grazing : IState
     private readonly float grazingYield;
 
     private float eatingCooldown = 0;
+    private float eatingDuration;
     
     public Grazing(GameObject gameObject, StateMachine stateMachine)
     {
@@ -27,18 +28,31 @@ public class Grazing : IState
     {
         //Set trigger for grazing animation
         creatureBehaviour.currentState = "Grazing";
+        //Subscribe to alert event
+        eatingDuration = Time.time + Random.Range(10f, 30f);
     }
 
     public void Update()
     {
         CheckForThreats();
+        Eat();
+        LookForNewSpot();
+    }
+
+    private void CheckForThreats()
+    {
+        
+    }
+
+    private void Eat()
+    {
         if (eatingCooldown > Time.time) return;
         eatingCooldown = Time.time + 1/creatureCharacteristics.eatingSpeed;
         
         creatureCharacteristics.AddFood(grazingYield);
     }
-
-    private void CheckForThreats()
+    
+    private void LookForNewSpot()
     {
         
     }
@@ -50,6 +64,6 @@ public class Grazing : IState
 
     public void Exit()
     {
-        
+        //Unsubscribe to alert event
     }
 }

@@ -27,7 +27,9 @@
             <e p="Drawer_Attribute_ReadOnly.cs" t="Include" />
             <e p="FieldOfHearingEditor.cs" t="Include" />
             <e p="FieldOfViewEditor.cs" t="Include" />
+            <e p="SoundEditor.cs" t="Include" />
           </e>
+          <e p="Sound.cs" t="Include" />
         </e>
       </e>
       <e p="Examens.sln" t="IncludeFlat" />

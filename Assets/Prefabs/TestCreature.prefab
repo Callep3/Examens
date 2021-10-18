@@ -171,13 +171,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   food: 0
   maxFood: 100
+  eatingSpeed: 1
   water: 0
   maxWater: 100
+  drinkingSpeed: 1
   energy: 0
   maxEnergy: 100
+  restingSpeed: 1
   health: 0
   maxHealth: 100
-  herbivore: 0
+  herbivore: 1
   carnivore: 0
 --- !u!114 &2349204417030828366
 MonoBehaviour:
@@ -191,6 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d63573fc6354a34484a6b7de7ce79bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 
 --- !u!114 &7687364152048832413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +252,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   hearingRadius: 6
   heardTargets: []

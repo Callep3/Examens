@@ -1135,6 +1135,63 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!1001 &3280336223377011737
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3280336222436681892, guid: 350b8b52dc63e7846bd2e29c5f183ccc, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280336222436681892, guid: 350b8b52dc63e7846bd2e29c5f183ccc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280336222436681892, guid: 350b8b52dc63e7846bd2e29c5f183ccc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280336222436681892, guid: 350b8b52dc63e7846bd2e29c5f183ccc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280336222436681892, guid: 350b8b52dc63e7846bd2e29c5f183ccc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280336222436681892, guid: 350b8b52dc63e7846bd2e29c5f183ccc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280336222436681892, guid: 350b8b52dc63e7846bd2e29c5f183ccc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280336222436681892, guid: 350b8b52dc63e7846bd2e29c5f183ccc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280336222436681892, guid: 350b8b52dc63e7846bd2e29c5f183ccc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280336222436681892, guid: 350b8b52dc63e7846bd2e29c5f183ccc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280336222436681892, guid: 350b8b52dc63e7846bd2e29c5f183ccc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280336222436681893, guid: 350b8b52dc63e7846bd2e29c5f183ccc, type: 3}
+      propertyPath: m_Name
+      value: SoundObject
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 350b8b52dc63e7846bd2e29c5f183ccc, type: 3}
 --- !u!1001 &7687364153380333284
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1142,14 +1199,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 403211876386475894, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
-      propertyPath: herbivore
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 403211876386475894, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
-      propertyPath: eatingSpeed
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7687364152048832402, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
       propertyPath: m_Name
       value: TestCreature
@@ -1202,6 +1251,5 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1635897526}
-    m_RemovedComponents:
-    - {fileID: 5419955950567161343, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
