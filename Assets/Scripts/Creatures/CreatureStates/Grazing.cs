@@ -9,6 +9,7 @@ public class Grazing : IState
     private readonly GameObject gameObject;
     private readonly CreatureBehaviour creatureBehaviour;
     private readonly CreatureMovement creatureMovement;
+    private readonly CreatureHearing creatureHearing;
     private readonly CreatureCharacteristics creatureCharacteristics;
     private readonly float grazingYield;
 
@@ -20,6 +21,8 @@ public class Grazing : IState
         this.stateMachine = stateMachine;
         this.gameObject = gameObject;
         creatureBehaviour = this.gameObject.GetComponent<CreatureBehaviour>();
+        creatureMovement = this.gameObject.GetComponent<CreatureMovement>();
+        creatureHearing = this.gameObject.GetComponent<CreatureHearing>();
         creatureCharacteristics = this.gameObject.GetComponent<CreatureCharacteristics>();
         //Assign grazingYield from constructor
     }
@@ -28,8 +31,7 @@ public class Grazing : IState
     {
         //Set trigger for grazing animation
         creatureBehaviour.currentState = "Grazing";
-        //Subscribe to alert event
-        eatingDuration = Time.time + Random.Range(10f, 30f);
+        eatingDuration = Time.time + 5f/*Random.Range(10f, 30f)*/;
     }
 
     public void Update()
@@ -41,7 +43,8 @@ public class Grazing : IState
 
     private void CheckForThreats()
     {
-        
+        if (creatureHearing.heardTargets.Count > 0)
+            stateMachine.ChangeState(new Alerted(gameObject, stateMachine));
     }
 
     private void Eat()
@@ -54,7 +57,8 @@ public class Grazing : IState
     
     private void LookForNewSpot()
     {
-        
+        if (eatingDuration > Time.time) return;
+        stateMachine.ChangeState(new LookingForGrazingSpot(gameObject, stateMachine));
     }
 
     public void PhysicsUpdate()
@@ -62,8 +66,13 @@ public class Grazing : IState
         
     }
 
+    public void OnTriggerStay2D(Collider2D other)
+    {
+        
+    }
+
     public void Exit()
     {
-        //Unsubscribe to alert event
+        
     }
 }

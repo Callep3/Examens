@@ -33,7 +33,7 @@ public class CreatureMovement : MonoBehaviour
     private void CheckProximity()
     {
         if (target != null) targetPosition = target.position;
-        
+
         if ((targetPosition - transform.position).magnitude < minimalTargetProximity) return;
 
         MoveCreature();
@@ -43,8 +43,6 @@ public class CreatureMovement : MonoBehaviour
     {
         var direction = targetPosition - transform.position;
         //TODO: add an accelerationSpeed topped at the movementSpeed and have it deaccelerate to land on the target position
-        Debug.Log(transform.position);
-        Debug.Log(direction.normalized);
 
         rigidbody2D.MovePosition(transform.position + direction.normalized * (movementSpeed * Time.deltaTime));
     }

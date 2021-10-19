@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Creature
   - Sound
+  - GrazingZone
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Zones
   - Water
   - UI
   - Obstacles

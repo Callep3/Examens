@@ -13,16 +13,16 @@ public class CreatureBehaviour : MonoBehaviour
     [Header("Debug")] 
     [Attribute_ReadOnly] public string currentState;
 
-    void Start()
+    private void Start()
     {
         stateMachine = new StateMachine();
-        grazing = new Grazing(gameObject, stateMachine);
+        grazing = new LookingForGrazingSpot(gameObject, stateMachine);
         
         stateMachine.Initialize(grazing);
         //TODO: Initialize State dependent on characteristics
     }
     
-    void Update()
+    private void Update()
     {
         stateMachine.Update();
     }
@@ -30,5 +30,10 @@ public class CreatureBehaviour : MonoBehaviour
     private void FixedUpdate()
     {
         stateMachine.FixedUpdate();
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        stateMachine.OnTriggerStay2D(other);
     }
 }

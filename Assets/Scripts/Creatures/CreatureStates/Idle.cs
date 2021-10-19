@@ -19,6 +19,11 @@ public class Idle : IState
         
     }
 
+    public void OnTriggerStay2D(Collider2D other)
+    {
+        
+    }
+
     public void Exit()
     {
         
