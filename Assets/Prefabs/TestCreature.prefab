@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 1354705271}
   m_Layer: 0
   m_Name: TestCreature
-  m_TagString: Untagged
+  m_TagString: Creature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028226c85865d3f4ca28f7f52167142d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  creatureTypeName: 
   food: 0
   maxFood: 100
   eatingSpeed: 1
