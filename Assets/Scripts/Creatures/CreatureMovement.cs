@@ -12,8 +12,10 @@ public class CreatureMovement : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private Transform target;
     [SerializeField] public Vector3 targetPosition;
+#pragma warning disable 108,114
     [SerializeField] private Collider2D collider;
     [SerializeField] private Rigidbody2D rigidbody2D;
+#pragma warning restore 108,114
 
     private void Start()
     {
