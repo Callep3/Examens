@@ -20,6 +20,4 @@ public class Sound : MonoBehaviour
         }
         lifespan -= Time.deltaTime;
     }
-    
-    //TODO: Object pool the sound prefab
 }
