@@ -169,7 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028226c85865d3f4ca28f7f52167142d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creatureTypeName: 
+  creatureTypeName: Test Creature
+  baseThreatLevel: 10
   food: 0
   maxFood: 100
   eatingSpeed: 1
@@ -183,6 +184,7 @@ MonoBehaviour:
   maxHealth: 100
   herbivore: 1
   carnivore: 0
+  hearingSensitivity: 1
 --- !u!114 &2349204417030828366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,5 +256,6 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 256
-  hearingRadius: 6
+  hearingRadius: 10
+  creatureCharacteristics: {fileID: 0}
   heardTargets: []

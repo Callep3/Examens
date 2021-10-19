@@ -8,6 +8,7 @@ public class CreatureCharacteristics : MonoBehaviour
 {
     [Header("Stats")] 
     public string creatureTypeName;
+    public float baseThreatLevel;
     [Space]
     public float food;
     public float maxFood = 100f;
@@ -20,10 +21,11 @@ public class CreatureCharacteristics : MonoBehaviour
     public float restingSpeed;
     public float health;
     public float maxHealth = 100f;
-    
+
     [Header("Characteristics")] 
     public bool herbivore;
     public bool carnivore;
+    public float hearingSensitivity;
 
     private void Start()
     {

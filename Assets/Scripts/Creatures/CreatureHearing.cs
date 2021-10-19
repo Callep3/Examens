@@ -8,14 +8,21 @@ public class CreatureHearing : MonoBehaviour
     [Header("Settings")] 
     [SerializeField] private LayerMask targetMask;
     [SerializeField] public float hearingRadius;
+    [SerializeField] private CreatureCharacteristics creatureCharacteristics;
     
     public List<Transform> heardTargets = new List<Transform>();
 
     private void Start()
     {
+        if (creatureCharacteristics == null)
+            creatureCharacteristics = GetComponent<CreatureCharacteristics>();
+    }
+
+    private void OnEnable()
+    {
         StartCoroutine(FindTargetsWithDelay(0.2f));
     }
-    
+
     private IEnumerator FindTargetsWithDelay(float delay)
     {
         while (true)
@@ -28,14 +35,16 @@ public class CreatureHearing : MonoBehaviour
     private void FindHeardTargets()
     {
         heardTargets.Clear();
-        Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, hearingRadius, targetMask);
+        Collider2D[] targetsInHearingRadius = Physics2D.OverlapCircleAll(transform.position, hearingRadius, targetMask);
 
-        for (int i = 0; i < targetsInViewRadius.Length; i++)
+        for (int i = 0; i < targetsInHearingRadius.Length; i++)
         {
-            Transform target = targetsInViewRadius[i].transform;
-            
-            //TODO: check if creature can hear the sound dependent on a calculation of the creatures sensitivity to the distance to the sound to the sounds volume
-            heardTargets.Add(target);
+            Transform target = targetsInHearingRadius[i].transform;
+            var distanceToSound = (target.transform.position - transform.position).magnitude;
+            var volume = target.localScale.x;
+
+            if (volume / distanceToSound > creatureCharacteristics.hearingSensitivity)
+                heardTargets.Add(target);
         }
     }
 }
