@@ -42,7 +42,6 @@ public class CreatureMovement : MonoBehaviour
     private void MoveCreature()
     {
         var direction = targetPosition - transform.position;
-        //TODO: Make the speed not be affected by distance
         //TODO: add an accelerationSpeed topped at the movementSpeed and have it deaccelerate to land on the target position
         Debug.Log(transform.position);
         Debug.Log(direction.normalized);
