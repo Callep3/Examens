@@ -21,9 +21,9 @@ public class Grazing : IState
         this.stateMachine = stateMachine;
         this.gameObject = gameObject;
         creatureBehaviour = this.gameObject.GetComponent<CreatureBehaviour>();
-        creatureMovement = this.gameObject.GetComponent<CreatureMovement>();
-        creatureHearing = this.gameObject.GetComponent<CreatureHearing>();
-        creatureCharacteristics = this.gameObject.GetComponent<CreatureCharacteristics>();
+        creatureMovement = creatureBehaviour.creatureMovement;
+        creatureHearing = creatureBehaviour.creatureHearing;
+        creatureCharacteristics = creatureBehaviour.creatureCharacteristics;
         //Assign grazingYield from constructor
     }
     
@@ -62,11 +62,6 @@ public class Grazing : IState
     }
 
     public void PhysicsUpdate()
-    {
-        
-    }
-
-    public void OnTriggerStay2D(Collider2D other)
     {
         
     }

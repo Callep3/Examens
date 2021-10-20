@@ -6,7 +6,6 @@ public interface IState
     public void Enter();
     public void Update();
     public void PhysicsUpdate();
-    public void OnTriggerStay2D(Collider2D other);
     public void Exit();
 }
 
@@ -33,11 +32,6 @@ public class StateMachine
     public void Update()
     {
         currentState?.Update();
-    }
-
-    public void OnTriggerStay2D(Collider2D other)
-    {
-        currentState?.OnTriggerStay2D(other);
     }
 
     public void FixedUpdate()

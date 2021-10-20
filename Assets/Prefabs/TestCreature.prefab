@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 7687364152048832413}
   - component: {fileID: 7687364152048832408}
   - component: {fileID: 1354705271}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TestCreature
   m_TagString: Creature
   m_Icon: {fileID: 0}
@@ -197,6 +197,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d63573fc6354a34484a6b7de7ce79bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  creatureMovement: {fileID: 0}
+  creatureCharacteristics: {fileID: 0}
+  creatureSight: {fileID: 0}
+  creatureHearing: {fileID: 0}
+  creatureCollider: {fileID: 0}
   currentState: 
 --- !u!114 &7687364152048832413
 MonoBehaviour:

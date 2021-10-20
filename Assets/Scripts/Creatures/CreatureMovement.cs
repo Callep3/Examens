@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CreatureMovement : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class CreatureMovement : MonoBehaviour
     [SerializeField] private Collider2D collider;
     [SerializeField] private Rigidbody2D rigidbody2D;
 #pragma warning restore 108,114
+    public static event Action<CreatureMovement> reachedTargetPosition;
 
     private void Start()
     {
@@ -34,7 +37,11 @@ public class CreatureMovement : MonoBehaviour
     {
         if (target != null) targetPosition = target.position;
 
-        if ((targetPosition - transform.position).magnitude < minimalTargetProximity) return;
+        if ((targetPosition - transform.position).magnitude < minimalTargetProximity)
+        {
+            reachedTargetPosition?.Invoke(this);
+            return;
+        }
 
         MoveCreature();
     }
@@ -45,5 +52,11 @@ public class CreatureMovement : MonoBehaviour
         //TODO: add an accelerationSpeed topped at the movementSpeed and have it deaccelerate to land on the target position
 
         rigidbody2D.MovePosition(transform.position + direction.normalized * (movementSpeed * Time.deltaTime));
+    }
+
+    public void SetTargetPosition(Vector3 newPosition)
+    {
+        //Set target position to new position
+        //Make sure the path to the target position doesn't collide with an obstacle, nor is too close to the obstacle
     }
 }

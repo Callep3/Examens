@@ -7,7 +7,11 @@ using UnityEngine;
 public class CreatureBehaviour : MonoBehaviour
 {
     private StateMachine stateMachine;
-    private CreatureCharacteristics creatureCharacteristics;
+    public CreatureMovement creatureMovement;
+    public CreatureCharacteristics creatureCharacteristics;
+    public CreatureSight creatureSight;
+    public CreatureHearing creatureHearing;
+    public Collider2D creatureCollider;
     private IState grazing;
 
     [Header("Debug")] 
@@ -16,6 +20,11 @@ public class CreatureBehaviour : MonoBehaviour
     private void Start()
     {
         stateMachine = new StateMachine();
+        creatureMovement = gameObject.GetComponent<CreatureMovement>();
+        creatureSight = gameObject.GetComponent<CreatureSight>();
+        creatureHearing = gameObject.GetComponent<CreatureHearing>();
+        creatureCharacteristics = gameObject.GetComponent<CreatureCharacteristics>();
+        creatureCollider = gameObject.GetComponent<Collider2D>();
         grazing = new LookingForGrazingSpot(gameObject, stateMachine);
         
         stateMachine.Initialize(grazing);
@@ -30,10 +39,5 @@ public class CreatureBehaviour : MonoBehaviour
     private void FixedUpdate()
     {
         stateMachine.FixedUpdate();
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        stateMachine.OnTriggerStay2D(other);
     }
 }

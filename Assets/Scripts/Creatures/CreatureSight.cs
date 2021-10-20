@@ -6,10 +6,10 @@ using UnityEngine;
 public class CreatureSight : MonoBehaviour
 {
     [Header("Settings")] 
-    [SerializeField] private LayerMask obstacleMask;
-    [SerializeField] private LayerMask targetMask;
-    [SerializeField] public float viewRadius;
-    [SerializeField, Range(0, 360)] public float viewAngle;
+    public LayerMask obstacleMask;
+    public LayerMask targetMask;
+    public float viewRadius;
+    [Range(0, 360)] public float viewAngle;
     
     public List<Transform> visibleTargets = new List<Transform>();
 
