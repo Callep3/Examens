@@ -56,7 +56,54 @@ public class CreatureMovement : MonoBehaviour
 
     public void SetTargetPosition(Vector3 newPosition)
     {
+        //TODO Fix this mess asap
+        targetPosition = newPosition;
         //Set target position to new position
         //Make sure the path to the target position doesn't collide with an obstacle, nor is too close to the obstacle
+        CheckPathObstruction();
+    }
+    
+    private void CheckPathObstruction()
+    {
+        //from transform.position to targetPosition, get colliders with layer "Obstacles"
+        //If obstacles has been found, calculate the distance to them and set the target position to the shortest distance
+        //Check if the obstacle is too close to the targetPosition, if it is, move it away from the obstacle and check again
+        
+        
+        /*
+        var distance = Vector2.Distance(gameObject.transform.position, creatureMovement.targetPosition);
+        var targetsInTheWay = Physics2D.RaycastAll(gameObject.transform.position,
+            creatureMovement.targetPosition - gameObject.transform.position,
+            distance, creatureSight.obstacleMask);
+        
+        //Save the entire length of the vector to a default variable "distanceToCollision"
+        //Check if any colliding distance from origin is shorter than the default variable
+        //Set the target position to the shortest distance
+        
+        var distanceToCollision = (creatureMovement.targetPosition - gameObject.transform.position).magnitude;
+        for (int i = 0; i < targetsInTheWay.Length; i++)
+        {
+            var tempDistanceToCollision = targetsInTheWay[i].distance;
+            Debug.Log(tempDistanceToCollision);
+
+            if (tempDistanceToCollision < distanceToCollision)
+                distanceToCollision = tempDistanceToCollision;
+        }
+
+        Debug.Log($"distanceToCollision {distanceToCollision}");
+        Debug.Log($"distanceToMove {(creatureMovement.targetPosition - gameObject.transform.position).magnitude}");
+
+        if (distanceToCollision >= (creatureMovement.targetPosition - gameObject.transform.position).magnitude)
+        {
+            Debug.Log("No obstruction");
+            return;
+        }
+        
+        creatureMovement.targetPosition = (creatureMovement.targetPosition - gameObject.transform.position).normalized 
+            * Mathf.Clamp(distanceToCollision - gameObject.transform.localScale.x * 0.75f, 
+                0, 
+                int.MaxValue) + gameObject.transform.position;
+        Debug.Log($"Vector Length {(creatureMovement.targetPosition - gameObject.transform.position).magnitude}");
+        */
     }
 }

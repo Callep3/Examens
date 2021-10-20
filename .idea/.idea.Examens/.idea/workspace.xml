@@ -20,21 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8c5eb78-2134-4aa4-b0ab-e4b8e8f68141" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/contentModel.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/riderModule.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestCreature.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TestCreature.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureBehaviour.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureSight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureSight.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStateMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForGrazingSpot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForGrazingSpot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +123,7 @@
       <workItem from="1634287144614" duration="4831000" />
       <workItem from="1634554103215" duration="6589000" />
       <workItem from="1634637960055" duration="13330000" />
-      <workItem from="1634728521874" duration="7969000" />
+      <workItem from="1634728521874" duration="9167000" />
     </task>
     <servers />
   </component>

@@ -77,47 +77,7 @@ public class LookingForGrazingSpot : IState
         
         var newSpotOffset = new Vector3(Random.Range(-1f, 1), Random.Range(-1f, 1), 0).normalized;
         newSpotOffset *= Random.Range(0f, grazingZone.transform.localScale.x);
-        creatureMovement.targetPosition = grazingZone.transform.position + newSpotOffset;
-
-        //TODO: Move CheckPathObstruction to be done in the CreatureMovement Script
-        CheckPathObstruction();
-    }
-
-    private void CheckPathObstruction()
-    {
-        var distance = Vector2.Distance(gameObject.transform.position, creatureMovement.targetPosition);
-        var targetsInTheWay = Physics2D.RaycastAll(gameObject.transform.position,
-            creatureMovement.targetPosition - gameObject.transform.position,
-            distance, creatureSight.obstacleMask);
-        
-        //Save the entire length of the vector to a default variable "distanceToCollision"
-        //Check if any colliding distance from origin is shorter than the default variable
-        //Set the target position to the shortest distance
-        
-        var distanceToCollision = (creatureMovement.targetPosition - gameObject.transform.position).magnitude;
-        for (int i = 0; i < targetsInTheWay.Length; i++)
-        {
-            var tempDistanceToCollision = targetsInTheWay[i].distance;
-            Debug.Log(tempDistanceToCollision);
-
-            if (tempDistanceToCollision < distanceToCollision)
-                distanceToCollision = tempDistanceToCollision;
-        }
-
-        Debug.Log($"distanceToCollision {distanceToCollision}");
-        Debug.Log($"distanceToMove {(creatureMovement.targetPosition - gameObject.transform.position).magnitude}");
-
-        if (distanceToCollision >= (creatureMovement.targetPosition - gameObject.transform.position).magnitude)
-        {
-            Debug.Log("No obstruction");
-            return;
-        }
-        
-        creatureMovement.targetPosition = (creatureMovement.targetPosition - gameObject.transform.position).normalized 
-                                          * Mathf.Clamp(distanceToCollision - gameObject.transform.localScale.x * 0.75f, 
-                                              0, 
-                                              int.MaxValue) + gameObject.transform.position;
-        Debug.Log($"Vector Length {(creatureMovement.targetPosition - gameObject.transform.position).magnitude}");
+        creatureMovement.SetTargetPosition(grazingZone.transform.position + newSpotOffset);
     }
 
     public void Exit()
