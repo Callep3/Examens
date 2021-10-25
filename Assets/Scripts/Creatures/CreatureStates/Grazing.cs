@@ -31,7 +31,7 @@ public class Grazing : IState
     {
         //Set trigger for grazing animation
         creatureBehaviour.currentState = "Grazing";
-        eatingDuration = Time.time + 5f/*Random.Range(10f, 30f)*/;
+        eatingDuration = Time.time + 2f/*Random.Range(10f, 30f)*/;
     }
 
     public void Update()

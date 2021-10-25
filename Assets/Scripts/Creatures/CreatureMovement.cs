@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class CreatureMovement : MonoBehaviour
 {
@@ -58,52 +59,38 @@ public class CreatureMovement : MonoBehaviour
     {
         //TODO Fix this mess asap
         targetPosition = newPosition;
-        //Set target position to new position
-        //Make sure the path to the target position doesn't collide with an obstacle, nor is too close to the obstacle
+        //Make sure the path to the target position doesn't collide with an obstacle, nor is too close to an obstacle
         CheckPathObstruction();
     }
     
     private void CheckPathObstruction()
     {
         //from transform.position to targetPosition, get colliders with layer "Obstacles"
+        var targetsInTheWay = Physics2D.CapsuleCastAll(
+            transform.position, 
+            transform.localScale, 
+            CapsuleDirection2D.Vertical, 
+            Vector2.Angle(transform.position, targetPosition), 
+            targetPosition - transform.position,
+            Vector2.Distance(targetPosition, transform.position), 
+            1 << 6);
+        
+
         //If obstacles has been found, calculate the distance to them and set the target position to the shortest distance
-        //Check if the obstacle is too close to the targetPosition, if it is, move it away from the obstacle and check again
-        
-        
-        /*
-        var distance = Vector2.Distance(gameObject.transform.position, creatureMovement.targetPosition);
-        var targetsInTheWay = Physics2D.RaycastAll(gameObject.transform.position,
-            creatureMovement.targetPosition - gameObject.transform.position,
-            distance, creatureSight.obstacleMask);
-        
-        //Save the entire length of the vector to a default variable "distanceToCollision"
-        //Check if any colliding distance from origin is shorter than the default variable
-        //Set the target position to the shortest distance
-        
-        var distanceToCollision = (creatureMovement.targetPosition - gameObject.transform.position).magnitude;
-        for (int i = 0; i < targetsInTheWay.Length; i++)
+        var distanceToTargetPosition = (targetPosition - transform.position).magnitude;
+        foreach (var obstacle in targetsInTheWay)
         {
-            var tempDistanceToCollision = targetsInTheWay[i].distance;
-            Debug.Log(tempDistanceToCollision);
+            Debug.DrawLine(transform.position, obstacle.point);
+            Debug.Log("PathCorrection");
+            var distanceToCollision = obstacle.distance;
 
-            if (tempDistanceToCollision < distanceToCollision)
-                distanceToCollision = tempDistanceToCollision;
+            if (distanceToCollision < distanceToTargetPosition)
+                distanceToTargetPosition = distanceToCollision;
         }
 
-        Debug.Log($"distanceToCollision {distanceToCollision}");
-        Debug.Log($"distanceToMove {(creatureMovement.targetPosition - gameObject.transform.position).magnitude}");
+        //Shorten the length of the path to target position to the closest point
+        var newPosition = (targetPosition - transform.position).normalized * distanceToTargetPosition + transform.position;
 
-        if (distanceToCollision >= (creatureMovement.targetPosition - gameObject.transform.position).magnitude)
-        {
-            Debug.Log("No obstruction");
-            return;
-        }
-        
-        creatureMovement.targetPosition = (creatureMovement.targetPosition - gameObject.transform.position).normalized 
-            * Mathf.Clamp(distanceToCollision - gameObject.transform.localScale.x * 0.75f, 
-                0, 
-                int.MaxValue) + gameObject.transform.position;
-        Debug.Log($"Vector Length {(creatureMovement.targetPosition - gameObject.transform.position).magnitude}");
-        */
+        targetPosition = newPosition;
     }
 }
