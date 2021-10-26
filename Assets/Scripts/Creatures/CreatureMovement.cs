@@ -57,9 +57,7 @@ public class CreatureMovement : MonoBehaviour
 
     public void SetTargetPosition(Vector3 newPosition)
     {
-        //TODO Fix this mess asap
         targetPosition = newPosition;
-        //Make sure the path to the target position doesn't collide with an obstacle, nor is too close to an obstacle
         CheckPathObstruction();
     }
     
