@@ -20,8 +20,10 @@
             <e p="CreatureStateMachine.cs" t="Include" />
             <e p="CreatureStates" t="Include">
               <e p="Alerted.cs" t="Include" />
+              <e p="Drinking.cs" t="Include" />
               <e p="Grazing.cs" t="Include" />
               <e p="Idle.cs" t="Include" />
+              <e p="LookingForDrinkingSpot.cs" t="Include" />
               <e p="LookingForGrazingSpot.cs" t="Include" />
             </e>
           </e>

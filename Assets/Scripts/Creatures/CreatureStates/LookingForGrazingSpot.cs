@@ -76,7 +76,7 @@ public class LookingForGrazingSpot : IState
         }
         
         var newSpotOffset = new Vector3(Random.Range(-1f, 1), Random.Range(-1f, 1), 0).normalized;
-        newSpotOffset *= Random.Range(0f, grazingZone.transform.localScale.x);
+        newSpotOffset *= Random.Range(0f, grazingZone.transform.localScale.x / 2);
         creatureMovement.SetTargetPosition(grazingZone.transform.position + newSpotOffset);
     }
 
