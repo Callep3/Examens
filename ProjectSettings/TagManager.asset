@@ -7,6 +7,7 @@ TagManager:
   - Creature
   - Sound
   - GrazingZone
+  - DrinkingZone
   layers:
   - Default
   - TransparentFX

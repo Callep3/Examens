@@ -9,16 +9,22 @@ public class CreatureCharacteristics : MonoBehaviour
     [Header("Stats")] 
     public string creatureTypeName;
     public float baseThreatLevel;
-    [Space]
+    [Header("Food")]
     public float food;
     public float maxFood = 100f;
     public float eatingSpeed;
+    public float hungerRate;
+    [Header("Water")]
     public float water;
     public float maxWater = 100f;
     public float drinkingSpeed;
+    public float thirstRate;
+    [Header("Energy")]
     public float energy;
     public float maxEnergy = 100f;
     public float restingSpeed;
+    public float drainRate;
+    [Header("Health")]
     public float health;
     public float maxHealth = 100f;
 
