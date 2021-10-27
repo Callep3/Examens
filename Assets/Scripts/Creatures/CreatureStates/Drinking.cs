@@ -31,14 +31,14 @@ public class Drinking : IState
 
     public void Update()
     {
-        CheckForThreats();
+        CheckForSounds();
         Drink();
     }
 
-    private void CheckForThreats()
+    private void CheckForSounds()
     {
         if (creatureHearing.heardTargets.Count > 0)
-            stateMachine.ChangeState(new Alerted(gameObject, stateMachine));
+            stateMachine.ChangeState(new Alerted(gameObject, stateMachine, this));
     }
     
     private void Drink()

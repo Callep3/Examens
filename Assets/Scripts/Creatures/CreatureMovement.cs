@@ -60,6 +60,12 @@ public class CreatureMovement : MonoBehaviour
         targetPosition = newPosition;
         CheckPathObstruction();
     }
+
+    public void LookTowardsPosition(Vector3 newPosition)
+    {
+        targetPosition = (newPosition - transform.position).normalized * (minimalTargetProximity / 2)
+                         + transform.position;
+    }
     
     private void CheckPathObstruction()
     {

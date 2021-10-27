@@ -36,15 +36,15 @@ public class Grazing : IState
 
     public void Update()
     {
-        CheckForThreats();
+        CheckForSounds();
         Eat();
         LookForNewSpot();
     }
 
-    private void CheckForThreats()
+    private void CheckForSounds()
     {
         if (creatureHearing.heardTargets.Count > 0)
-            stateMachine.ChangeState(new Alerted(gameObject, stateMachine));
+            stateMachine.ChangeState(new Alerted(gameObject, stateMachine, this));
     }
 
     private void Eat()
