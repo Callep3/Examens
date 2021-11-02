@@ -37,6 +37,7 @@ public class Alerted : IState
 
     public void Update()
     {
+        //TODO add timer so it doesnt do this every frame
         ScanSurroundings();
         CheckForThreats();
         ResumePreviousState();
@@ -66,7 +67,7 @@ public class Alerted : IState
             if (seenCreatureCharacteristics.creatureTypeName == creatureCharacteristics.creatureTypeName) return;
 
             if (seenCreatureCharacteristics.baseThreatLevel > creatureCharacteristics.baseThreatLevel)
-                /*stateMachine.ChangeState(new Fleeing(gameObject, stateMachine))*/ ;
+                stateMachine.ChangeState(new Fleeing(gameObject, stateMachine));
         }
     }
 

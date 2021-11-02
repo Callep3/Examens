@@ -43,6 +43,8 @@ public class Grazing : IState
 
     private void CheckForSounds()
     {
+        //TODO: Add scan timer so it doesnt scan every frame
+        
         if (creatureHearing.heardTargets.Count > 0)
             stateMachine.ChangeState(new Alerted(gameObject, stateMachine, this));
     }

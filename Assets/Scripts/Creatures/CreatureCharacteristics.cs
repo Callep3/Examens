@@ -45,6 +45,8 @@ public class CreatureCharacteristics : MonoBehaviour
     {
         
     }
+    
+    //TODO: Add a bool return function for deciding which threat is greater
 
     #region Food
 

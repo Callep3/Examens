@@ -20,11 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8c5eb78-2134-4aa4-b0ab-e4b8e8f68141" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TestCreature.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TestCreature.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureCharacteristics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureCharacteristics.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Alerted.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Alerted.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Drinking.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Drinking.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,10 +43,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Idle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/ObjectPooler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sound.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Fleeing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureHearing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/Drawer_Attribute_ReadOnly.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/SoundEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Roaming.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/FieldOfViewEditor.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -69,14 +74,16 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Idle.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Editor/PathEditor.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureCharacteristics.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForGrazingSpot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForDrinkingSpot.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Drinking.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureCharacteristics.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Roaming.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Alerted.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Drinking.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Alerted.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Fleeing.cs" />
       </list>
     </option>
   </component>
@@ -131,7 +138,8 @@
       <workItem from="1634894161306" duration="4704000" />
       <workItem from="1635154100389" duration="6521000" />
       <workItem from="1635241844192" duration="3210000" />
-      <workItem from="1635342333907" duration="2721000" />
+      <workItem from="1635342333907" duration="2760000" />
+      <workItem from="1635851344877" duration="7236000" />
     </task>
     <servers />
   </component>
@@ -157,9 +165,9 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="794" y="233" key="RiderGenerateDialog" timestamp="1635252626907">
+    <state x="794" y="233" key="RiderGenerateDialog" timestamp="1635878619076">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="794" y="233" key="RiderGenerateDialog/0.0.1920.1080/1920.0.1920.1040@0.0.1920.1080" timestamp="1635252626907" />
+    <state x="794" y="233" key="RiderGenerateDialog/0.0.1920.1080/1920.0.1920.1040@0.0.1920.1080" timestamp="1635878619076" />
   </component>
 </project>

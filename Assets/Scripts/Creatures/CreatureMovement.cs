@@ -27,6 +27,7 @@ public class CreatureMovement : MonoBehaviour
             collider = GetComponent<Collider2D>();
         if (rigidbody2D == null)
             rigidbody2D = GetComponent<Rigidbody2D>();
+        targetPosition = transform.position;
     }
 
     private void FixedUpdate()
@@ -85,7 +86,6 @@ public class CreatureMovement : MonoBehaviour
         foreach (var obstacle in targetsInTheWay)
         {
             Debug.DrawLine(transform.position, obstacle.point);
-            Debug.Log("PathCorrection");
             var distanceToCollision = obstacle.distance;
 
             if (distanceToCollision < distanceToTargetPosition)

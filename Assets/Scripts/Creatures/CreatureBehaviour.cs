@@ -25,7 +25,7 @@ public class CreatureBehaviour : MonoBehaviour
         creatureHearing = gameObject.GetComponent<CreatureHearing>();
         creatureCharacteristics = gameObject.GetComponent<CreatureCharacteristics>();
         creatureCollider = gameObject.GetComponent<Collider2D>();
-        grazing = new LookingForDrinkingSpot(gameObject, stateMachine);
+        grazing = new Fleeing(gameObject, stateMachine);
         
         stateMachine.Initialize(grazing);
         //TODO: Initialize State dependent on characteristics
