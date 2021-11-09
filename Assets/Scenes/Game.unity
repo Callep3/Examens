@@ -939,7 +939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7687364152048832402, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7687364152048832412, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
       propertyPath: m_RootOrder
@@ -947,11 +947,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7687364152048832412, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.92
+      value: -6.55
       objectReference: {fileID: 0}
     - target: {fileID: 7687364152048832412, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.65
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7687364152048832412, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -989,6 +989,14 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 97163679}
+    - target: {fileID: 7687364152048832413, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
+      propertyPath: movementSpeed
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687364152048832414, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
 --- !u!1 &1688386158
@@ -1462,11 +1470,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7687364152048832412, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -7.43
       objectReference: {fileID: 0}
     - target: {fileID: 7687364152048832412, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 7687364152048832412, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1503,6 +1511,10 @@ PrefabInstance:
     - target: {fileID: 7687364152048832413, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
       propertyPath: target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687364152048832414, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9949749f2c14be446add21659cabcbe5, type: 3}

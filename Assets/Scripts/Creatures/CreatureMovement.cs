@@ -71,22 +71,24 @@ public class CreatureMovement : MonoBehaviour
     private void CheckPathObstruction()
     {
         //from transform.position to targetPosition, get colliders with layer "Obstacles"
-        var targetsInTheWay = Physics2D.CapsuleCastAll(
-            transform.position, 
-            transform.localScale, 
-            CapsuleDirection2D.Vertical, 
-            Vector2.Angle(transform.position, targetPosition), 
-            targetPosition - transform.position,
-            Vector2.Distance(targetPosition, transform.position), 
+        var targetsInTheWay = Physics2D.LinecastAll(transform.position, 
+            targetPosition,
             1 << 6);
         
+        //Physics2D.CapsuleCastAll(
+        //    transform.position, 
+        //    transform.localScale, 
+        //    CapsuleDirection2D.Vertical, 
+        //    Vector2.Angle(transform.position, targetPosition), 
+        //    targetPosition - transform.position,
+        //    Vector2.Distance(targetPosition, transform.position), 
+        //    1 << 6);
 
         //If obstacles has been found, calculate the distance to them and set the target position to the shortest distance
         var distanceToTargetPosition = (targetPosition - transform.position).magnitude;
         foreach (var obstacle in targetsInTheWay)
         {
-            Debug.DrawLine(transform.position, obstacle.point);
-            var distanceToCollision = obstacle.distance;
+            var distanceToCollision = obstacle.distance - transform.localScale.x / 2;
 
             if (distanceToCollision < distanceToTargetPosition)
                 distanceToTargetPosition = distanceToCollision;

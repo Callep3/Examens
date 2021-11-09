@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Collections;
+using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,8 +20,9 @@ public class Fleeing : IState
     private readonly Collider2D creatureCollider;
     
     private List<CreatureCharacteristics> threats = new List<CreatureCharacteristics>();
-    private int numberOfLineChecks = 10;
-    private float baseObstacleCheckDistance = 2;
+    //The number of additional line checks besides the one straight forward multiplied by 2
+    private int numberOfLineChecks = 9;
+    private float baseObstacleCheckDistance = 2f;
     private float checkCooldown;
     private float checkInterval = 0.2f;
 
@@ -38,6 +42,7 @@ public class Fleeing : IState
     {
         //Set trigger for Running animation
         creatureBehaviour.currentState = "Fleeing";
+        //Time.timeScale = 0.01f;
     }
 
     public void Update()
@@ -94,40 +99,56 @@ public class Fleeing : IState
             nearestThreat = threats[i];
             distanceToNearestThreat = distanceToThreat;
         }
-
+        
         FleeFromThreat(nearestThreat);
     }
 
     private void FleeFromThreat(CreatureCharacteristics nearestThreat)
     {
         var angleOffset = 180f / numberOfLineChecks;
+        var percentLength = 1f / (numberOfLineChecks + 1f);
         var directionAwayFromThreat = (gameObject.transform.position - nearestThreat.transform.position).normalized;
-        int pathToChoose = 0;
-        for (int i = 0; i < numberOfLineChecks; i++)
-        {
-            if (i % 2 == 0)
-                angleOffset *= -1f;
+        
+        int pathToChoose = CheckHits(directionAwayFromThreat, angleOffset, percentLength);
 
-            if (Physics2D.CapsuleCast(
-                gameObject.transform.position,
-                gameObject.transform.localScale,
-                CapsuleDirection2D.Vertical,
-                Vector2.Angle(gameObject.transform.position, directionAwayFromThreat) + angleOffset * ((i + 1) / 2),
-                directionAwayFromThreat,
-                baseObstacleCheckDistance / ((i + 1) / 2),
+        directionAwayFromThreat = Quaternion.Euler(0, 0, angleOffset * pathToChoose) * directionAwayFromThreat;
+
+        creatureMovement.SetTargetPosition(directionAwayFromThreat + gameObject.transform.position);
+    }
+
+    private int CheckHits(Vector3 directionAwayFromThreat, float angleOffset, float percentLength)
+    {
+        if (!Physics2D.CapsuleCast(gameObject.transform.position,
+            gameObject.transform.localScale,
+            CapsuleDirection2D.Vertical,
+            0,
+            directionAwayFromThreat,
+            baseObstacleCheckDistance,
+            creatureSight.obstacleMask))
+            return 0;
+
+        for (int i = 1; i <= numberOfLineChecks; i++)
+        {
+            if (!Physics2D.Linecast(gameObject.transform.position,
+                gameObject.transform.position +
+                (Quaternion.Euler(0, 0, angleOffset * i) * directionAwayFromThreat).normalized * 
+                (baseObstacleCheckDistance * (percentLength * (numberOfLineChecks + 1 - i))),
                 creatureSight.obstacleMask))
             {
-                pathToChoose = i + 1;
+                return i;
+            }
+            
+            if (!Physics2D.Linecast(gameObject.transform.position,
+                gameObject.transform.position +
+                (Quaternion.Euler(0, 0, -angleOffset * i) * directionAwayFromThreat).normalized * 
+                (baseObstacleCheckDistance * (percentLength * (numberOfLineChecks + 1 - i))),
+                creatureSight.obstacleMask))
+            {
+                return -i;
             }
         }
 
-        Debug.Log(pathToChoose);
-        if (pathToChoose % 2 == 0)
-            angleOffset *= -1f;
-
-        directionAwayFromThreat = Quaternion.Euler(0, 0, angleOffset * pathToChoose) * directionAwayFromThreat;
-        
-        creatureMovement.SetTargetPosition(directionAwayFromThreat + gameObject.transform.position);
+        return 0;
     }
 
     public void PhysicsUpdate()
