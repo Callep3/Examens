@@ -27,6 +27,12 @@ public class Roaming : IState
     {
         //Set trigger for Walking animation
         creatureBehaviour.currentState = "Roaming";
+        DecideNeed();
+    }
+
+    private void DecideNeed()
+    {
+        
     }
 
     public void Update()

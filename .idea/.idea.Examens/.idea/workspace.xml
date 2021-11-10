@@ -20,11 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8c5eb78-2134-4aa4-b0ab-e4b8e8f68141" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Fleeing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Fleeing.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Roaming.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Roaming.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +43,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Idle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/ObjectPooler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sound.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Fleeing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureHearing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/Drawer_Attribute_ReadOnly.cs" root0="FORCE_HIGHLIGHTING" />
@@ -73,13 +78,14 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForDrinkingSpot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Drinking.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureCharacteristics.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Roaming.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Alerted.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Editor/FieldOfViewEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Fleeing.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Roaming.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CameraController.cs" />
       </list>
     </option>
   </component>
@@ -139,7 +145,8 @@
       <workItem from="1635934576827" duration="4878000" />
       <workItem from="1636026772886" duration="3323000" />
       <workItem from="1636378522188" duration="5452000" />
-      <workItem from="1636448419659" duration="5126000" />
+      <workItem from="1636448419659" duration="6733000" />
+      <workItem from="1636541479872" duration="3304000" />
     </task>
     <servers />
   </component>

@@ -11,6 +11,7 @@
           <e p="Attributes" t="Include">
             <e p="Attribute_ReadOnly.cs" t="Include" />
           </e>
+          <e p="CameraController.cs" t="Include" />
           <e p="Creatures" t="Include">
             <e p="CreatureBehaviour.cs" t="Include" />
             <e p="CreatureCharacteristics.cs" t="Include" />
