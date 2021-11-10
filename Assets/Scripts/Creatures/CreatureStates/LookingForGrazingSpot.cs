@@ -53,7 +53,12 @@ public class LookingForGrazingSpot : IState
     {
         
     }
-    
+
+    public void LateUpdate()
+    {
+        
+    }
+
     private void SetNewGrazingSpot()
     {
         if (hasGrazingSpot) return;

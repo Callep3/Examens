@@ -156,6 +156,11 @@ public class Fleeing : IState
         
     }
 
+    public void LateUpdate()
+    {
+        
+    }
+
     public void Exit()
     {
         

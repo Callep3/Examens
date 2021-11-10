@@ -50,7 +50,12 @@ public class LookingForDrinkingSpot : IState
     {
         
     }
-    
+
+    public void LateUpdate()
+    {
+        
+    }
+
     private void SetNewDrinkingSpot()
     {
         if (hasDrinkingSpot) return;

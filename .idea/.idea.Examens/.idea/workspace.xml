@@ -20,10 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8c5eb78-2134-4aa4-b0ab-e4b8e8f68141" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Controllers/Controller.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Controllers/Controller.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStateMachine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Alerted.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Alerted.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Drinking.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Drinking.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Fleeing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Fleeing.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Idle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Idle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForDrinkingSpot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForDrinkingSpot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForGrazingSpot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForGrazingSpot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Roaming.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Roaming.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Graphs/Graph.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Graphs/Graph.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Graphs/Node.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Graphs/Node.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WaypointsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WaypointsController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +50,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForDrinkingSpot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Fleeing.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CAFB29D5-2338-47FB-B4ED-CF8D7C32B1E3/e5/f818103d/Action`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/Drawer_Attribute_ReadOnly.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Roaming.cs" root0="FORCE_HIGHLIGHTING" />
@@ -66,23 +80,24 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Sound.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookForThreats.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookForGrazingSpot.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStateMachine.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Idle.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Editor/PathEditor.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForGrazingSpot.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForDrinkingSpot.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Drinking.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureCharacteristics.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Alerted.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Editor/FieldOfViewEditor.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Fleeing.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Roaming.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CameraController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Graphs/Node.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/WaypointsController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Graphs/Graph.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStateMachine.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Alerted.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Drinking.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Fleeing.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Idle.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForDrinkingSpot.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForGrazingSpot.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Roaming.cs" />
       </list>
     </option>
   </component>
@@ -143,7 +158,7 @@
       <workItem from="1636026772886" duration="3323000" />
       <workItem from="1636378522188" duration="5452000" />
       <workItem from="1636448419659" duration="6733000" />
-      <workItem from="1636541479872" duration="5111000" />
+      <workItem from="1636541479872" duration="9800000" />
     </task>
     <servers />
   </component>
@@ -173,6 +188,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="794" y="233" key="RiderGenerateDialog/0.0.1920.1080/1920.0.1920.1040@0.0.1920.1080" timestamp="1635878619076" />
+    <state x="118" y="127" width="1684" height="811" key="VCS.FileHistoryDialog" timestamp="1636560672649">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="118" y="127" width="1684" height="811" key="VCS.FileHistoryDialog/0.0.1920.1080/1920.0.1920.1040@0.0.1920.1080" timestamp="1636560672649" />
     <state x="623" y="248" width="672" height="678" key="search.everywhere.popup" timestamp="1636452232381">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

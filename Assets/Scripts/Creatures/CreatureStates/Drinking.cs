@@ -54,6 +54,11 @@ public class Drinking : IState
         
     }
 
+    public void LateUpdate()
+    {
+        
+    }
+
     public void Exit()
     {
         

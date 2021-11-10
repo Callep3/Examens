@@ -12,14 +12,16 @@ public class Node
 	public float zPos;
 	public float f, g, h;
 	public Node cameFrom;
+	public Waypoint.waypointType WaypointType;
 	
-	public Node(GameObject i)
+	public Node(Waypoint wp)
 	{
-		id = i;
-		xPos = i.transform.position.x;
-		yPos = i.transform.position.y;
-		zPos = i.transform.position.z;
+		id = wp.gameObject;
+		xPos = wp.gameObject.transform.position.x;
+		yPos = wp.gameObject.transform.position.y;
+		zPos = wp.gameObject.transform.position.z;
 		path = null;
+		WaypointType = wp.type;
 	}
 	
 	public GameObject getId()
@@ -27,4 +29,9 @@ public class Node
 		return id;	
 	}
 
+	public Waypoint.waypointType getType()
+	{
+		return WaypointType;
+	}
+	
 }

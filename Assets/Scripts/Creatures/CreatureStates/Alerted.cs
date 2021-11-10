@@ -83,6 +83,11 @@ public class Alerted : IState
         
     }
 
+    public void LateUpdate()
+    {
+        
+    }
+
     public void Exit()
     {
         

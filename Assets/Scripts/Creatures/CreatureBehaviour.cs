@@ -12,7 +12,7 @@ public class CreatureBehaviour : MonoBehaviour
     public CreatureSight creatureSight;
     public CreatureHearing creatureHearing;
     public Collider2D creatureCollider;
-    private IState grazing;
+    private IState roaming;
 
     [Header("Debug")] 
     [Attribute_ReadOnly] public string currentState;
@@ -25,10 +25,9 @@ public class CreatureBehaviour : MonoBehaviour
         creatureHearing = gameObject.GetComponent<CreatureHearing>();
         creatureCharacteristics = gameObject.GetComponent<CreatureCharacteristics>();
         creatureCollider = gameObject.GetComponent<Collider2D>();
-        grazing = new Fleeing(gameObject, stateMachine);
+        roaming = new Roaming(gameObject, stateMachine);
         
-        stateMachine.Initialize(grazing);
-        //TODO: Initialize State dependent on characteristics
+        stateMachine.Initialize(roaming);
     }
     
     private void Update()
@@ -39,5 +38,10 @@ public class CreatureBehaviour : MonoBehaviour
     private void FixedUpdate()
     {
         stateMachine.FixedUpdate();
+    }
+
+    private void LateUpdate()
+    {
+        stateMachine.LateUpdate();
     }
 }

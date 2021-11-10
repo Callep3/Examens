@@ -10,19 +10,19 @@ public class Graph
 	
 	public Graph(){}
 	
-	public void AddNode(GameObject id, bool removeRenderer = true, bool removeCollider = true, bool removeId = true)
+	public void AddNode(Waypoint waypoint, bool removeRenderer = true, bool removeCollider = true, bool removeId = true)
 	{
-		Node node = new Node(id);
+		Node node = new Node(waypoint);
 		nodes.Add(node);
-		
+
 		//remove colliders and mesh renderer
 		if(removeCollider)
-			GameObject.Destroy(id.GetComponent<Collider>());
+			GameObject.Destroy(waypoint.gameObject.GetComponent<Collider>());
 		if(removeRenderer)
-			GameObject.Destroy(id.GetComponent<Renderer>());
+			GameObject.Destroy(waypoint.gameObject.GetComponent<Renderer>());
 		if(removeId)
 		{
-			TextMesh[] textms = id.GetComponentsInChildren<TextMesh>() as TextMesh[];
+			TextMesh[] textms = waypoint.gameObject.GetComponentsInChildren<TextMesh>() as TextMesh[];
 
         	foreach (TextMesh tm in textms)	
 				GameObject.Destroy(tm.gameObject);
@@ -51,7 +51,18 @@ public class Graph
 		}
 		return null;
 	}
-	
+
+	private Node findNodeOfType(Waypoint.waypointType type)
+	{
+		foreach (Node n in nodes)
+		{
+			if (n.getType() == type)
+			{
+				return n;
+			}
+		}
+		return null;
+	} 
 	
 	public int getPathLength()
 	{
@@ -142,6 +153,76 @@ public class Graph
 		return false;	
 	}
 	
+	public bool AStar(GameObject startId, Waypoint.waypointType endType)
+	{
+		Node start = findNode(startId);
+		Node end = findNodeOfType(endType);
+	  
+		if(start == null || end == null)
+		{
+			return false;	
+		}
+	  	
+		List<Node>	open = new List<Node>();
+		List<Node>	closed = new List<Node>();
+		float tentative_g_score= 0;
+		bool tentative_is_better;
+	  	
+		start.g = 0;
+		start.h = distance(start,end);
+		start.f = start.h;
+		open.Add(start);
+	  	
+		while(open.Count > 0)
+		{
+			int i = lowestF(open);
+			Node thisnode = open[i];
+			if(thisnode.id == end.id)  //path found
+			{
+				reconstructPath(start,end);
+				return true;	
+			} 	
+			
+			open.RemoveAt(i);
+			closed.Add(thisnode);
+			
+			Node neighbour;
+			foreach(Edge e in thisnode.edgelist)
+			{
+				neighbour = e.endNode;
+				neighbour.g = thisnode.g + distance(thisnode,neighbour);
+				
+				if (closed.IndexOf(neighbour) > -1)
+					continue;
+				
+				tentative_g_score = thisnode.g + distance(thisnode, neighbour);
+				
+				if( open.IndexOf(neighbour) == -1 )
+				{
+					open.Add(neighbour);
+					tentative_is_better = true;	
+				}
+				else if (tentative_g_score < neighbour.g)
+				{
+					tentative_is_better = true;	
+				}
+				else
+					tentative_is_better = false;
+					
+				if(tentative_is_better)
+				{
+					neighbour.cameFrom = thisnode;
+					neighbour.g = tentative_g_score;
+					neighbour.h = distance(thisnode,end);
+					neighbour.f = neighbour.g + neighbour.h;	
+				}
+			}
+  	
+		}
+		
+		return false;	
+	}
+	
 	public void reconstructPath(Node startId, Node endId)
 	{
 		pathList.Clear();
@@ -202,5 +283,29 @@ public class Graph
 	  		Vector3 to = (edges[i].startNode.id.transform.position - edges[i].endNode.id.transform.position) * 0.05f;
     		Debug.DrawRay(edges[i].endNode.id.transform.position, to, Color.blue);
     	}
+    }
+
+    public GameObject GetClosestWaypoint(Vector3 position)
+    {
+	    Node closestNode = null;
+	    foreach (Node n in nodes)
+	    {
+		    if (closestNode == null)
+		    {
+			    closestNode = n;
+			    continue;
+		    }
+
+		    if (Physics2D.Linecast(position, new Vector2(n.xPos, n.yPos), 1 << 6))
+			    continue;
+
+		    if ((new Vector3(n.xPos, n.yPos, n.zPos) - position).sqrMagnitude <
+		        (new Vector3(closestNode.xPos, closestNode.yPos, closestNode.zPos) - position).sqrMagnitude)
+		    {
+			    closestNode = n;
+		    }
+	    }
+
+	    return closestNode.id;
     }
 }

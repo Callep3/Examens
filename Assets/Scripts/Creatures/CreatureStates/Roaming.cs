@@ -11,6 +11,11 @@ public class Roaming : IState
     private readonly CreatureHearing creatureHearing;
     private readonly CreatureSight creatureSight;
     private readonly CreatureCharacteristics creatureCharacteristics;
+
+    private Waypoint[] waypoints;
+    private GameObject currentNode;
+    private int currentWP = 0;
+    private Graph graph;
     
     public Roaming(GameObject gameObject, StateMachine stateMachine)
     {
@@ -27,12 +32,48 @@ public class Roaming : IState
     {
         //Set trigger for Walking animation
         creatureBehaviour.currentState = "Roaming";
+        waypoints = WaypointsController.Instance.waypoints;
+        graph = WaypointsController.Instance.graph;
+        currentNode = graph.GetClosestWaypoint(gameObject.transform.position);
+
+        CreatureMovement.reachedTargetPosition += IncrementWP; 
+        
         DecideNeed();
+    }
+
+    private void IncrementWP(CreatureMovement obj)
+    {
+        if (graph.getPathLength() == 0 || currentWP == graph.getPathLength())
+        {
+            stateMachine.ChangeState(new LookingForGrazingSpot(gameObject, stateMachine));
+            return;
+        }
+
+        currentNode = graph.getPathPoint(currentWP);
+        
+        currentWP++;
+
+        if (currentWP < graph.getPathLength())
+        {
+            creatureMovement.targetPosition = graph.getPathPoint(currentWP).transform.position;
+        }
     }
 
     private void DecideNeed()
     {
-        
+        GoTo(Waypoint.waypointType.GrazingSpot);
+    }
+
+    private void GoTo(GameObject waypoint)
+    {
+        graph.AStar(currentNode, waypoint);
+        currentWP = 0;
+    }
+
+    private void GoTo(Waypoint.waypointType type)
+    {
+        graph.AStar(currentNode, type);
+        currentWP = 0;
     }
 
     public void Update()
@@ -45,8 +86,13 @@ public class Roaming : IState
         
     }
 
-    public void Exit()
+    public void LateUpdate()
     {
         
+    }
+
+    public void Exit()
+    {
+        CreatureMovement.reachedTargetPosition -= IncrementWP;
     }
 }

@@ -13,32 +13,44 @@ public struct Link
     public direction dir;
 }
 
+[Serializable]
+public struct Waypoint
+{
+    public enum waypointType { DefaultSpot, GrazingSpot, DrinkingSpot, NestingSpot };
+    public GameObject gameObject;
+    public waypointType type;
+}
+
 public class WaypointsController : MonoBehaviour
 {
-    public GameObject[] waypoints;
+    public static WaypointsController Instance;
+    public Waypoint[] waypoints;
     public Link[] links;
     public Graph graph = new Graph();
-
-    void Start()
+    
+    private void Awake()
     {
-        if (waypoints.Length > 0)
-        {
-            foreach (GameObject waypoint in waypoints)
-            {
-                graph.AddNode(waypoint);
-            }
+        Instance = this;
+    }
 
-            foreach (Link link in links)
-            {
-                graph.AddEdge(link.node1, link.node2);
-                if (link.dir == Link.direction.BI)
-                    graph.AddEdge(link.node2, link.node1);
-            }
+    private void Start()
+    {
+        if (waypoints.Length <= 0) return;
+        
+        foreach (Waypoint waypoint in waypoints)
+        {
+            graph.AddNode(waypoint);
+        }
+
+        foreach (Link link in links)
+        {
+            graph.AddEdge(link.node1, link.node2);
+            if (link.dir == Link.direction.BI)
+                graph.AddEdge(link.node2, link.node1);
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         graph.debugDraw();
     }

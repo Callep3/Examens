@@ -68,6 +68,11 @@ public class Grazing : IState
         
     }
 
+    public void LateUpdate()
+    {
+        
+    }
+
     public void Exit()
     {
         
