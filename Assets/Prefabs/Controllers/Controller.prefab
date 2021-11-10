@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8313062066819160181}
   - component: {fileID: 8313062066819160182}
+  - component: {fileID: 2109766995}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -51,3 +52,143 @@ MonoBehaviour:
   - amountToPool: 10
     objectToPool: {fileID: 3280336222436681893, guid: 350b8b52dc63e7846bd2e29c5f183ccc, type: 3}
     shouldExpand: 1
+--- !u!114 &2109766995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8313062066819160183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f84cc5c550a44042ad2e1534348a2f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  links:
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
+  - node1: {fileID: 0}
+    node2: {fileID: 0}
+    dir: 1
