@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Roaming : IState
 {
@@ -16,6 +18,7 @@ public class Roaming : IState
     private GameObject currentNode;
     private int currentWP = 0;
     private Graph graph;
+    private CreatureStats currentNeed;
     
     public Roaming(GameObject gameObject, StateMachine stateMachine)
     {
@@ -45,7 +48,7 @@ public class Roaming : IState
     {
         if (graph.getPathLength() == 0 || currentWP == graph.getPathLength())
         {
-            stateMachine.ChangeState(new LookingForGrazingSpot(gameObject, stateMachine));
+            ChangeState();
             return;
         }
 
@@ -59,9 +62,88 @@ public class Roaming : IState
         }
     }
 
+    private void ChangeState()
+    {
+        switch (currentNeed)
+        {
+            case CreatureStats.none:
+                stateMachine.ChangeState(new Nesting(gameObject, stateMachine));
+                break;
+            
+            case CreatureStats.food:
+                if (creatureCharacteristics.herbivore)
+                {
+                    stateMachine.ChangeState(new LookingForGrazingSpot(gameObject, stateMachine));
+                }
+
+                if (creatureCharacteristics.carnivore)
+                {
+                    stateMachine.ChangeState(new Roaming(gameObject, stateMachine));
+                }
+                break;
+            
+            case CreatureStats.water:
+                stateMachine.ChangeState(new LookingForDrinkingSpot(gameObject, stateMachine));
+                break;
+            
+            case CreatureStats.energy:
+                stateMachine.ChangeState(new Nesting(gameObject, stateMachine));
+                break;
+            
+            case CreatureStats.health:
+                stateMachine.ChangeState(new Nesting(gameObject, stateMachine));
+                break;
+            
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
     private void DecideNeed()
     {
-        GoTo(Waypoint.waypointType.GrazingSpot);
+        currentNeed = creatureCharacteristics.GetLowestStat();
+        
+        switch (currentNeed)
+        {
+            case CreatureStats.none:
+                GoTo(Waypoint.waypointType.NestingSpot);
+                break;
+            
+            case CreatureStats.food:
+                if (creatureCharacteristics.herbivore)
+                {
+                    GoTo(Waypoint.waypointType.GrazingSpot);
+                }
+
+                if (creatureCharacteristics.carnivore)
+                {
+                    switch (Random.Range(0, 2))
+                    {
+                        case 0:
+                            GoTo(Waypoint.waypointType.GrazingSpot);
+                            break;
+                        case 1:
+                            GoTo(Waypoint.waypointType.DrinkingSpot);
+                            break;
+                    }
+                }
+                break;
+            
+            case CreatureStats.water:
+                GoTo(Waypoint.waypointType.DrinkingSpot);
+                break;
+            
+            case CreatureStats.energy:
+                GoTo(Waypoint.waypointType.NestingSpot);
+                break;
+            
+            case CreatureStats.health:
+                GoTo(Waypoint.waypointType.NestingSpot);
+                break;
+            
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
     private void GoTo(GameObject waypoint)

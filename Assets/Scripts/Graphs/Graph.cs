@@ -52,16 +52,25 @@ public class Graph
 		return null;
 	}
 
-	private Node findNodeOfType(Waypoint.waypointType type)
+	private Node findClosestNodeOfType(GameObject origin, Waypoint.waypointType type)
 	{
+		float distance = 100000f;
+		Vector3 position = origin.transform.position;
+		Node nodeToReturn = null;
+		
 		foreach (Node n in nodes)
 		{
 			if (n.getType() == type)
 			{
-				return n;
+				var tempDistance = (new Vector3(n.xPos, n.yPos, n.zPos) - position).sqrMagnitude;
+				if (!(tempDistance < distance)) continue;
+				
+				distance = tempDistance;
+				nodeToReturn = n;
 			}
 		}
-		return null;
+
+		return nodeToReturn;
 	} 
 	
 	public int getPathLength()
@@ -78,11 +87,10 @@ public class Graph
 	{
 		foreach(Node n in pathList)
 		{	
-			Debug.Log(n.id.name);	
+			Debug.Log(n.id.name);
 		}
 	}
-	
-	
+
 	public bool AStar(GameObject startId, GameObject endId)
 	{
 	  	Node start = findNode(startId);
@@ -156,7 +164,7 @@ public class Graph
 	public bool AStar(GameObject startId, Waypoint.waypointType endType)
 	{
 		Node start = findNode(startId);
-		Node end = findNodeOfType(endType);
+		Node end = findClosestNodeOfType(startId, endType);
 	  
 		if(start == null || end == null)
 		{

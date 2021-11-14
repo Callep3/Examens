@@ -27,7 +27,9 @@
               <e p="Idle.cs" t="Include" />
               <e p="LookingForDrinkingSpot.cs" t="Include" />
               <e p="LookingForGrazingSpot.cs" t="Include" />
+              <e p="Nesting.cs" t="Include" />
               <e p="Roaming.cs" t="Include" />
+              <e p="Sleeping.cs" t="Include" />
             </e>
           </e>
           <e p="Editor" t="Include">

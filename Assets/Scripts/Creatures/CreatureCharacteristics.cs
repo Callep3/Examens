@@ -4,11 +4,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum Gender
+{
+    male,
+    female
+}
+
+public enum CreatureStats
+{
+    none,
+    food,
+    water,
+    energy,
+    health
+}
+
 public class CreatureCharacteristics : MonoBehaviour
 {
     [Header("Stats")] 
     public string creatureTypeName;
     public float baseThreatLevel;
+    public Gender gender;
     [Header("Food")]
     public float food;
     public float maxFood = 100f;
@@ -40,13 +56,41 @@ public class CreatureCharacteristics : MonoBehaviour
         energy = maxEnergy;
         health = maxHealth;
     }
-
-    private void Update()
-    {
-        
-    }
     
     //TODO: Add a bool return function for deciding which threat is greater
+
+    public CreatureStats GetLowestStat()
+    {
+        if (food / maxFood < water / maxWater && 
+            food / maxFood < energy / maxEnergy &&
+            food / maxFood < health / maxHealth)
+        {
+            return CreatureStats.food;
+        }
+
+        if (water / maxWater < food / maxFood && 
+            water / maxWater < energy / maxEnergy && 
+            water / maxWater < health / maxHealth)
+        {
+            return CreatureStats.water;
+        }
+        
+        if (energy / maxEnergy < food / maxFood && 
+            energy / maxEnergy < water / maxWater && 
+            energy / maxEnergy < health / maxHealth)
+        {
+            return CreatureStats.energy;
+        }
+        
+        if (health / maxHealth < food / maxFood && 
+            health / maxHealth < water / maxWater && 
+            health / maxHealth < energy / maxEnergy)
+        {
+            return CreatureStats.health;
+        }
+
+        return CreatureStats.none;
+    }
 
     #region Food
 
