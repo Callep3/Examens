@@ -30,7 +30,20 @@ public class Nesting : IState
 
     public void Update()
     {
+        UpdateStats();
+    }
+    
+    private void UpdateStats()
+    {
+        if (creatureCharacteristics.statUpdateInterval > Time.time) return;
+        creatureCharacteristics.statUpdateInterval = Time.time + creatureCharacteristics.statUpdateCooldown;
         
+        creatureCharacteristics.RemoveFood(creatureCharacteristics.hungerRate);
+        creatureCharacteristics.RemoveWater(creatureCharacteristics.thirstRate);
+        creatureCharacteristics.RemoveEnergy(creatureCharacteristics.drainRate);
+
+        if (creatureCharacteristics.food <= 0 || creatureCharacteristics.water <= 0)
+            creatureCharacteristics.RemoveHealth(1f);
     }
 
     public void PhysicsUpdate()

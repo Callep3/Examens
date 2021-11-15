@@ -24,7 +24,6 @@
               <e p="Drinking.cs" t="Include" />
               <e p="Fleeing.cs" t="Include" />
               <e p="Grazing.cs" t="Include" />
-              <e p="Idle.cs" t="Include" />
               <e p="LookingForDrinkingSpot.cs" t="Include" />
               <e p="LookingForGrazingSpot.cs" t="Include" />
               <e p="Nesting.cs" t="Include" />

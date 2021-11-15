@@ -11,8 +11,6 @@ public class Drinking : IState
     private readonly CreatureHearing creatureHearing;
     private readonly CreatureCharacteristics creatureCharacteristics;
 
-    private float drinkingCooldown = 0;
-    
     public Drinking(GameObject gameObject, StateMachine stateMachine)
     {
         this.stateMachine = stateMachine;
@@ -32,21 +30,25 @@ public class Drinking : IState
     public void Update()
     {
         CheckForSounds();
-        Drink();
+        UpdateStats();
+    }
+    
+    private void UpdateStats()
+    {
+        if (creatureCharacteristics.statUpdateInterval > Time.time) return;
+        creatureCharacteristics.statUpdateInterval = Time.time + creatureCharacteristics.statUpdateCooldown;
+        
+        creatureCharacteristics.RemoveFood(creatureCharacteristics.hungerRate);
+        creatureCharacteristics.AddWater(creatureCharacteristics.drinkingSpeed);
+
+        if (creatureCharacteristics.food <= 0 || creatureCharacteristics.water <= 0)
+            creatureCharacteristics.RemoveHealth(1f);
     }
 
     private void CheckForSounds()
     {
         if (creatureHearing.heardTargets.Count > 0)
             stateMachine.ChangeState(new Alerted(gameObject, stateMachine, this));
-    }
-    
-    private void Drink()
-    {
-        if (drinkingCooldown > Time.time) return;
-        drinkingCooldown = Time.time + 1/creatureCharacteristics.eatingSpeed;
-        
-        creatureCharacteristics.AddWater(5);
     }
 
     public void PhysicsUpdate()

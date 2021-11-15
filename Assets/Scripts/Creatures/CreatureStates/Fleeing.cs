@@ -42,12 +42,26 @@ public class Fleeing : IState
     {
         //Set trigger for Running animation
         creatureBehaviour.currentState = "Fleeing";
-        //Time.timeScale = 0.01f;
+        //Set creatureMovement to running
     }
 
     public void Update()
     {
         CheckForBiggestThreat();
+        UpdateStats();
+    }
+
+    private void UpdateStats()
+    {
+        if (creatureCharacteristics.statUpdateInterval > Time.time) return;
+        creatureCharacteristics.statUpdateInterval = Time.time + creatureCharacteristics.statUpdateCooldown;
+        
+        creatureCharacteristics.RemoveFood(creatureCharacteristics.hungerRate * creatureMovement.runningModifier);
+        creatureCharacteristics.RemoveWater(creatureCharacteristics.thirstRate * creatureMovement.runningModifier);
+        creatureCharacteristics.RemoveEnergy(creatureCharacteristics.drainRate * creatureMovement.runningModifier);
+
+        if (creatureCharacteristics.food <= 0 || creatureCharacteristics.water <= 0)
+            creatureCharacteristics.RemoveHealth(1f);
     }
 
     private void CheckForBiggestThreat()

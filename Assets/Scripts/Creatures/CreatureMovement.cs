@@ -11,6 +11,7 @@ public class CreatureMovement : MonoBehaviour
     [SerializeField] private float accelerationSpeed = 1f;
     [SerializeField] private float decelerationSpeed = 1f;
     [SerializeField] private float minimalTargetProximity = 0.1f;
+    [SerializeField] public float runningModifier = 2f;
     
     [Header("Debug")]
     [SerializeField] private Transform target;

@@ -3410,22 +3410,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 696029111, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 403211876386475894, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
-      propertyPath: drainRate
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 403211876386475894, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
-      propertyPath: hungerRate
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 403211876386475894, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
-      propertyPath: thirstRate
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 7687364152048832402, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
       propertyPath: m_Name
       value: TestCreature
@@ -3473,14 +3457,6 @@ PrefabInstance:
     - target: {fileID: 7687364152048832412, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7687364152048832413, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7687364152048832414, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9949749f2c14be446add21659cabcbe5, type: 3}

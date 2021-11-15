@@ -43,11 +43,13 @@ public class CreatureCharacteristics : MonoBehaviour
     [Header("Health")]
     public float health;
     public float maxHealth = 100f;
-
     [Header("Characteristics")] 
     public bool herbivore;
     public bool carnivore;
     public float hearingSensitivity;
+
+    [NonSerialized] public float statUpdateInterval;
+    [NonSerialized] public float statUpdateCooldown = 0.5f;
 
     private void Start()
     {

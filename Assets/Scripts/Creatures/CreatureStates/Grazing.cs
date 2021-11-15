@@ -11,9 +11,7 @@ public class Grazing : IState
     private readonly CreatureMovement creatureMovement;
     private readonly CreatureHearing creatureHearing;
     private readonly CreatureCharacteristics creatureCharacteristics;
-    private readonly float grazingYield;
 
-    private float eatingCooldown = 0;
     private float eatingDuration;
     
     public Grazing(GameObject gameObject, StateMachine stateMachine)
@@ -31,14 +29,26 @@ public class Grazing : IState
     {
         //Set trigger for grazing animation
         creatureBehaviour.currentState = "Grazing";
-        eatingDuration = Time.time + 2f/*Random.Range(10f, 30f)*/;
+        eatingDuration = Time.time + Random.Range(10f, 30f);
     }
 
     public void Update()
     {
         CheckForSounds();
-        Eat();
+        UpdateStats();
         LookForNewSpot();
+    }
+    
+    private void UpdateStats()
+    {
+        if (creatureCharacteristics.statUpdateInterval > Time.time) return;
+        creatureCharacteristics.statUpdateInterval = Time.time + creatureCharacteristics.statUpdateCooldown;
+        
+        creatureCharacteristics.AddFood(creatureCharacteristics.eatingSpeed);
+        creatureCharacteristics.RemoveWater(creatureCharacteristics.thirstRate);
+
+        if (creatureCharacteristics.food <= 0 || creatureCharacteristics.water <= 0)
+            creatureCharacteristics.RemoveHealth(1f);
     }
 
     private void CheckForSounds()
@@ -49,14 +59,6 @@ public class Grazing : IState
             stateMachine.ChangeState(new Alerted(gameObject, stateMachine, this));
     }
 
-    private void Eat()
-    {
-        if (eatingCooldown > Time.time) return;
-        eatingCooldown = Time.time + 1/creatureCharacteristics.eatingSpeed;
-        
-        creatureCharacteristics.AddFood(grazingYield);
-    }
-    
     private void LookForNewSpot()
     {
         if (eatingDuration > Time.time) return;

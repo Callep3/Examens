@@ -23,8 +23,18 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Examens/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureCharacteristics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureCharacteristics.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Alerted.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Alerted.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Drinking.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Drinking.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Fleeing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Fleeing.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Idle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Idle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForDrinkingSpot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForDrinkingSpot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForGrazingSpot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForGrazingSpot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Nesting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Nesting.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Roaming.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Roaming.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Graphs/Graph.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Graphs/Graph.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Sleeping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Sleeping.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +52,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/Drawer_Attribute_ReadOnly.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Roaming.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Idle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/ObjectPooler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sound.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureHearing.cs" root0="FORCE_HIGHLIGHTING" />
@@ -72,22 +81,22 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Editor/FieldOfViewEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CameraController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Graphs/Node.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/WaypointsController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStateMachine.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Alerted.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Drinking.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Fleeing.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Idle.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForDrinkingSpot.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForGrazingSpot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Graphs/Graph.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureCharacteristics.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Sleeping.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Roaming.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Fleeing.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Drinking.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForDrinkingSpot.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/LookingForGrazingSpot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Nesting.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Roaming.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Sleeping.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Grazing.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Creatures/CreatureStates/Alerted.cs" />
       </list>
     </option>
   </component>
@@ -152,7 +161,8 @@
       <workItem from="1636639903028" duration="595000" />
       <workItem from="1636727536273" duration="2984000" />
       <workItem from="1636809202394" duration="4886000" />
-      <workItem from="1636902112285" duration="593000" />
+      <workItem from="1636902112285" duration="1794000" />
+      <workItem from="1636969555164" duration="2405000" />
     </task>
     <servers />
   </component>
