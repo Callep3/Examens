@@ -8,6 +8,7 @@ TagManager:
   - Sound
   - GrazingZone
   - DrinkingZone
+  - NestingZone
   layers:
   - Default
   - TransparentFX

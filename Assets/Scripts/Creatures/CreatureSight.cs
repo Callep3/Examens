@@ -15,6 +15,7 @@ public class CreatureSight : MonoBehaviour
 
     [Header("Debug")]
     public CreatureMovement creatureMovement;
+    public bool sleeping;
 
     private void Start()
     {
@@ -36,6 +37,7 @@ public class CreatureSight : MonoBehaviour
     private void FindVisibleTargets()
     {
         visibleTargets.Clear();
+        if (sleeping) return;
         Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, targetMask);
 
         for (int i = 0; i < targetsInViewRadius.Length; i++)

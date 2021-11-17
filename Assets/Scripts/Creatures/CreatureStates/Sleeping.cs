@@ -25,14 +25,50 @@ public class Sleeping : IState
     
     public void Enter()
     {
-        
+        //Set trigger for Sleeping animation
+        creatureBehaviour.currentState = "Sleeping";
+        Propagate();
     }
 
     public void Update()
     {
+        CheckForSounds();
         UpdateStats();
     }
-    
+
+    private void Propagate()
+    {
+        if (creatureCharacteristics.food < creatureCharacteristics.maxFood * 0.8f) return;
+        if (creatureCharacteristics.energy < creatureCharacteristics.maxEnergy * 0.8f) return;
+        
+        var zone = Physics2D.OverlapPoint(gameObject.transform.position, 1 << 3);
+        var creaturesInZone = Physics2D.OverlapCircleAll(zone.transform.position, zone.transform.localScale.x, 1 << 9);
+
+        foreach (var creature in creaturesInZone)
+        {
+            if (creature.gameObject == gameObject) continue;
+            var characteristics = creature.gameObject.GetComponent<CreatureCharacteristics>();
+            if (characteristics.creatureTypeName != creatureCharacteristics.creatureTypeName) continue;
+            if (characteristics.gender == creatureCharacteristics.gender) continue;
+
+            var baby = ObjectPooler.Instance.GetPooledObject("Creature");
+            baby.transform.position = gameObject.transform.position;
+            baby.SetActive(true);
+
+            creatureCharacteristics.food -= creatureCharacteristics.maxFood / 2;
+            creatureCharacteristics.energy -= creatureCharacteristics.maxEnergy / 2;
+        }
+    }
+
+    private void CheckForSounds()
+    {
+        if (creatureHearing.checkInterval > Time.time) return;
+        creatureHearing.checkInterval = Time.time + creatureHearing.checkCooldown;
+
+        if (creatureHearing.heardTargets.Count > 0)
+            stateMachine.ChangeState(new Alerted(gameObject, stateMachine, this));
+    }
+
     private void UpdateStats()
     {
         if (creatureCharacteristics.statUpdateInterval > Time.time) return;
@@ -41,9 +77,11 @@ public class Sleeping : IState
         creatureCharacteristics.RemoveFood(creatureCharacteristics.hungerRate);
         creatureCharacteristics.RemoveWater(creatureCharacteristics.thirstRate);
         creatureCharacteristics.AddEnergy(creatureCharacteristics.restingSpeed);
+        creatureCharacteristics.AddHealth(creatureCharacteristics.restingSpeed);
 
-        if (creatureCharacteristics.food <= 0 || creatureCharacteristics.water <= 0)
-            creatureCharacteristics.RemoveHealth(1f);
+        if (creatureCharacteristics.energy >= creatureCharacteristics.maxEnergy &&
+            creatureCharacteristics.health >= creatureCharacteristics.maxHealth)
+            stateMachine.ChangeState(new Roaming(gameObject, stateMachine));
     }
 
     public void PhysicsUpdate()

@@ -43,6 +43,9 @@ public class Drinking : IState
 
         if (creatureCharacteristics.food <= 0 || creatureCharacteristics.water <= 0)
             creatureCharacteristics.RemoveHealth(1f);
+
+        if (creatureCharacteristics.water >= creatureCharacteristics.maxWater)
+            stateMachine.ChangeState(new Roaming(gameObject, stateMachine));
     }
 
     private void CheckForSounds()

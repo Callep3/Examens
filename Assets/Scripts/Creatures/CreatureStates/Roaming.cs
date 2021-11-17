@@ -64,10 +64,11 @@ public class Roaming : IState
 
     private void ChangeState()
     {
+        Debug.Log("Changing states");
         switch (currentNeed)
         {
             case CreatureStats.none:
-                stateMachine.ChangeState(new Nesting(gameObject, stateMachine));
+                stateMachine.ChangeState(new Roaming(gameObject, stateMachine));
                 break;
             
             case CreatureStats.food:

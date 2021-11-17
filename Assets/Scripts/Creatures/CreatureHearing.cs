@@ -12,6 +12,9 @@ public class CreatureHearing : MonoBehaviour
     
     public List<Transform> heardTargets = new List<Transform>();
 
+    public float checkInterval;
+    public float checkCooldown = 0.2f;
+
     private void Start()
     {
         if (creatureCharacteristics == null)

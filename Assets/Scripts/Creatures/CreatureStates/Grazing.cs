@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Grazing : IState
 {
@@ -12,6 +14,9 @@ public class Grazing : IState
     private readonly CreatureHearing creatureHearing;
     private readonly CreatureCharacteristics creatureCharacteristics;
 
+    private float checkInterval;
+    private float checkCooldown = 0.2f;
+    
     private float eatingDuration;
     
     public Grazing(GameObject gameObject, StateMachine stateMachine)
@@ -49,12 +54,16 @@ public class Grazing : IState
 
         if (creatureCharacteristics.food <= 0 || creatureCharacteristics.water <= 0)
             creatureCharacteristics.RemoveHealth(1f);
+
+        if (creatureCharacteristics.food >= creatureCharacteristics.maxFood)
+            stateMachine.ChangeState(new Roaming(gameObject, stateMachine));
     }
 
     private void CheckForSounds()
     {
-        //TODO: Add scan timer so it doesnt scan every frame
-        
+        if (checkInterval > Time.time) return;
+        checkInterval = Time.time + checkCooldown;
+
         if (creatureHearing.heardTargets.Count > 0)
             stateMachine.ChangeState(new Alerted(gameObject, stateMachine, this));
     }
