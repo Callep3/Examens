@@ -32,20 +32,21 @@ public class LookingForDrinkingSpot : IState
         creatureBehaviour.currentState = "Looking For Drinking Spot";
 
         SetNewDrinkingSpot();
-        CreatureMovement.reachedTargetPosition += StartDrinking;
-    }
-    
-    private void StartDrinking(CreatureMovement creatureMovement)
-    {
-        if (creatureMovement.gameObject == gameObject && hasDrinkingSpot)
-            stateMachine.ChangeState(new Drinking(gameObject, stateMachine));
     }
 
     public void Update()
     {
         UpdateStats();
+        StartDrinking();
     }
-    
+
+    private void StartDrinking()
+    {
+        if (!creatureMovement.CheckProximity()) return;
+        if (creatureMovement.gameObject == gameObject && hasDrinkingSpot)
+            stateMachine.ChangeState(new Drinking(gameObject, stateMachine));
+    }
+
     private void UpdateStats()
     {
         if (creatureCharacteristics.statUpdateInterval > Time.time) return;
@@ -98,6 +99,6 @@ public class LookingForDrinkingSpot : IState
 
     public void Exit()
     {
-        CreatureMovement.reachedTargetPosition -= StartDrinking;
+        
     }
 }

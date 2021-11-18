@@ -39,65 +39,7 @@ public class Roaming : IState
         graph = WaypointsController.Instance.graph;
         currentNode = graph.GetClosestWaypoint(gameObject.transform.position);
 
-        CreatureMovement.reachedTargetPosition += IncrementWP; 
-        
         DecideNeed();
-    }
-
-    private void IncrementWP(CreatureMovement obj)
-    {
-        if (graph.getPathLength() == 0 || currentWP == graph.getPathLength())
-        {
-            ChangeState();
-            return;
-        }
-
-        currentNode = graph.getPathPoint(currentWP);
-        
-        currentWP++;
-
-        if (currentWP < graph.getPathLength())
-        {
-            creatureMovement.targetPosition = graph.getPathPoint(currentWP).transform.position;
-        }
-    }
-
-    private void ChangeState()
-    {
-        Debug.Log("Changing states");
-        switch (currentNeed)
-        {
-            case CreatureStats.none:
-                stateMachine.ChangeState(new Roaming(gameObject, stateMachine));
-                break;
-            
-            case CreatureStats.food:
-                if (creatureCharacteristics.herbivore)
-                {
-                    stateMachine.ChangeState(new LookingForGrazingSpot(gameObject, stateMachine));
-                }
-
-                if (creatureCharacteristics.carnivore)
-                {
-                    stateMachine.ChangeState(new Roaming(gameObject, stateMachine));
-                }
-                break;
-            
-            case CreatureStats.water:
-                stateMachine.ChangeState(new LookingForDrinkingSpot(gameObject, stateMachine));
-                break;
-            
-            case CreatureStats.energy:
-                stateMachine.ChangeState(new Nesting(gameObject, stateMachine));
-                break;
-            
-            case CreatureStats.health:
-                stateMachine.ChangeState(new Nesting(gameObject, stateMachine));
-                break;
-            
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
     }
 
     private void DecideNeed()
@@ -161,9 +103,68 @@ public class Roaming : IState
 
     public void Update()
     {
+        IncrementWP();
         UpdateStats();
     }
-    
+
+    private void IncrementWP()
+    {
+        if (!creatureMovement.CheckProximity()) return;
+        
+        if (graph.getPathLength() == 0 || currentWP == graph.getPathLength())
+        {
+            ChangeState();
+            return;
+        }
+
+        currentNode = graph.getPathPoint(currentWP);
+        
+        currentWP++;
+
+        if (currentWP < graph.getPathLength())
+        {
+            creatureMovement.targetPosition = graph.getPathPoint(currentWP).transform.position;
+        }
+    }
+
+    private void ChangeState()
+    {
+        Debug.Log("Changing states");
+        switch (currentNeed)
+        {
+            case CreatureStats.none:
+                stateMachine.ChangeState(new Roaming(gameObject, stateMachine));
+                break;
+            
+            case CreatureStats.food:
+                if (creatureCharacteristics.herbivore)
+                {
+                    stateMachine.ChangeState(new LookingForGrazingSpot(gameObject, stateMachine));
+                }
+
+                if (creatureCharacteristics.carnivore)
+                {
+                    stateMachine.ChangeState(new Roaming(gameObject, stateMachine));
+                }
+                break;
+            
+            case CreatureStats.water:
+                stateMachine.ChangeState(new LookingForDrinkingSpot(gameObject, stateMachine));
+                break;
+            
+            case CreatureStats.energy:
+                stateMachine.ChangeState(new Nesting(gameObject, stateMachine));
+                break;
+            
+            case CreatureStats.health:
+                stateMachine.ChangeState(new Nesting(gameObject, stateMachine));
+                break;
+            
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
     private void UpdateStats()
     {
         if (creatureCharacteristics.statUpdateInterval > Time.time) return;
@@ -189,6 +190,6 @@ public class Roaming : IState
 
     public void Exit()
     {
-        CreatureMovement.reachedTargetPosition -= IncrementWP;
+        
     }
 }

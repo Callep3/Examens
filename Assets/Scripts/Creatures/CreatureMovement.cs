@@ -20,7 +20,6 @@ public class CreatureMovement : MonoBehaviour
     [SerializeField] private Collider2D collider;
     [SerializeField] private Rigidbody2D rigidbody2D;
 #pragma warning restore 108,114
-    public static event Action<CreatureMovement> reachedTargetPosition;
 
     private void Start()
     {
@@ -33,20 +32,14 @@ public class CreatureMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CheckProximity();
+        MoveCreature();
     }
 
-    private void CheckProximity()
+    public bool CheckProximity()
     {
         if (target != null) targetPosition = target.position;
 
-        if ((targetPosition - transform.position).magnitude < minimalTargetProximity)
-        {
-            reachedTargetPosition?.Invoke(this);
-            return;
-        }
-
-        MoveCreature();
+        return (targetPosition - transform.position).magnitude < minimalTargetProximity;
     }
 
     private void MoveCreature()

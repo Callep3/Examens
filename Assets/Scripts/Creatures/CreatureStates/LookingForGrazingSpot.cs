@@ -35,20 +35,21 @@ public class LookingForGrazingSpot : IState
         creatureBehaviour.currentState = "Looking For Grazing Spot";
 
         SetNewGrazingSpot();
-        CreatureMovement.reachedTargetPosition += StartGrazing;
-    }
-
-    private void StartGrazing(CreatureMovement creatureMovement)
-    {
-        if (creatureMovement.gameObject == gameObject && hasGrazingSpot)
-            stateMachine.ChangeState(new Grazing(gameObject, stateMachine));
     }
 
     public void Update()
     {
         UpdateStats();
+        StartGrazing();
     }
-    
+
+    private void StartGrazing()
+    {
+        if (!creatureMovement.CheckProximity()) return;
+        if (creatureMovement.gameObject == gameObject && hasGrazingSpot)
+            stateMachine.ChangeState(new Grazing(gameObject, stateMachine));
+    }
+
     private void UpdateStats()
     {
         if (creatureCharacteristics.statUpdateInterval > Time.time) return;
@@ -100,6 +101,6 @@ public class LookingForGrazingSpot : IState
 
     public void Exit()
     {
-        CreatureMovement.reachedTargetPosition -= StartGrazing;
+        
     }
 }
