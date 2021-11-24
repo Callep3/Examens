@@ -14,6 +14,7 @@ public class CreatureHearing : MonoBehaviour
 
     public float checkInterval;
     public float checkCooldown = 0.2f;
+    public List<Transform> heardHostileTargets = new List<Transform>();
 
     private void Start()
     {
@@ -38,6 +39,7 @@ public class CreatureHearing : MonoBehaviour
     private void FindHeardTargets()
     {
         heardTargets.Clear();
+        heardHostileTargets.Clear();
         Collider2D[] targetsInHearingRadius = Physics2D.OverlapCircleAll(transform.position, hearingRadius, targetMask);
 
         for (int i = 0; i < targetsInHearingRadius.Length; i++)
@@ -48,6 +50,13 @@ public class CreatureHearing : MonoBehaviour
 
             if (volume / distanceToSound > creatureCharacteristics.hearingSensitivity)
                 heardTargets.Add(target);
+
+            if (!heardTargets.Contains(target)) continue;
+            var sound = target.GetComponent<Sound>();
+            if (!sound.hostile) continue;
+            if (sound.parent == creatureCharacteristics.creatureTypeName) continue;
+            
+            heardHostileTargets.Add(target);
         }
     }
 }

@@ -35,6 +35,8 @@ public class Grazing : IState
         //Set trigger for grazing animation
         creatureBehaviour.currentState = "Grazing";
         eatingDuration = Time.time + Random.Range(10f, 30f);
+        
+        creatureMovement.SetTargetPosition(gameObject.transform.position);
     }
 
     public void Update()
@@ -61,10 +63,10 @@ public class Grazing : IState
 
     private void CheckForSounds()
     {
-        if (checkInterval > Time.time) return;
-        checkInterval = Time.time + checkCooldown;
+        if (creatureHearing.checkInterval > Time.time) return;
+        creatureHearing.checkInterval = Time.time + creatureHearing.checkCooldown;
 
-        if (creatureHearing.heardTargets.Count > 0)
+        if (creatureHearing.heardHostileTargets.Count > 0)
             stateMachine.ChangeState(new Alerted(gameObject, stateMachine, this));
     }
 

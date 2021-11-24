@@ -81,14 +81,16 @@ public class Fleeing : IState
             creatureSight.viewRadius, 
             creatureSight.targetMask
         );
+        
+        var nrbyThreats = nearbyThreats.Where(threat => threat.gameObject.GetComponent<CreatureCharacteristics>().creatureTypeName != creatureCharacteristics.creatureTypeName).ToList();
 
-        if (nearbyThreats.Length <= 1)
+        if (nrbyThreats.Count <= 0)
             stateMachine.ChangeState(new Alerted(gameObject, stateMachine, new Roaming(gameObject, stateMachine)));
 
-        for (int i = 0; i < nearbyThreats.Length; i++)
+        for (int i = 0; i < nrbyThreats.Count; i++)
         {
-            if (nearbyThreats[i] == creatureCollider) continue;
-            CreatureCharacteristics threatCharacteristics = nearbyThreats[i].GetComponent<CreatureCharacteristics>();
+            if (nrbyThreats[i] == creatureCollider) continue;
+            CreatureCharacteristics threatCharacteristics = nrbyThreats[i].GetComponent<CreatureCharacteristics>();
 
             if (threatCharacteristics == null) continue;
             if (threatCharacteristics.baseThreatLevel < creatureCharacteristics.baseThreatLevel) continue;

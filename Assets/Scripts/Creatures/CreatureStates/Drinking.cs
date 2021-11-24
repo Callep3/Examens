@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class Drinking : IState
     private readonly CreatureBehaviour creatureBehaviour;
     private readonly CreatureMovement creatureMovement;
     private readonly CreatureHearing creatureHearing;
+    private readonly CreatureSight creatureSight;
     private readonly CreatureCharacteristics creatureCharacteristics;
 
     public Drinking(GameObject gameObject, StateMachine stateMachine)
@@ -18,6 +20,7 @@ public class Drinking : IState
         creatureBehaviour = this.gameObject.GetComponent<CreatureBehaviour>();
         creatureMovement = creatureBehaviour.creatureMovement;
         creatureHearing = creatureBehaviour.creatureHearing;
+        creatureSight = creatureBehaviour.creatureSight;
         creatureCharacteristics = creatureBehaviour.creatureCharacteristics;
     }
 
@@ -25,6 +28,8 @@ public class Drinking : IState
     {
         //Set trigger for drinking animation
         creatureBehaviour.currentState = "Drinking";
+        
+        creatureMovement.SetTargetPosition(gameObject.transform.position);
     }
 
     public void Update()
@@ -32,7 +37,16 @@ public class Drinking : IState
         CheckForSounds();
         UpdateStats();
     }
-    
+
+    private void CheckForSounds()
+    {
+        if (creatureHearing.checkInterval > Time.time) return;
+        creatureHearing.checkInterval = Time.time + creatureHearing.checkCooldown;
+
+        if (creatureHearing.heardHostileTargets.Count > 0)
+            stateMachine.ChangeState(new Alerted(gameObject, stateMachine, this));
+    }
+
     private void UpdateStats()
     {
         if (creatureCharacteristics.statUpdateInterval > Time.time) return;
@@ -46,12 +60,6 @@ public class Drinking : IState
 
         if (creatureCharacteristics.water >= creatureCharacteristics.maxWater)
             stateMachine.ChangeState(new Roaming(gameObject, stateMachine));
-    }
-
-    private void CheckForSounds()
-    {
-        if (creatureHearing.heardTargets.Count > 0)
-            stateMachine.ChangeState(new Alerted(gameObject, stateMachine, this));
     }
 
     public void PhysicsUpdate()

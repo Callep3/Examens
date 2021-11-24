@@ -28,8 +28,13 @@ public class CreatureBehaviour : MonoBehaviour
         roaming = new Roaming(gameObject, stateMachine);
         
         stateMachine.Initialize(roaming);
+        
+        if (creatureCharacteristics.carnivore)
+            UIController.Instance.ChangeNumberOfCarnivores(1);
+        else if (creatureCharacteristics.herbivore)
+            UIController.Instance.ChangeNumberOfHerbivores(1);
     }
-    
+
     private void Update()
     {
         stateMachine.Update();

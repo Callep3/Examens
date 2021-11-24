@@ -16,7 +16,7 @@ public struct Link
 [Serializable]
 public struct Waypoint
 {
-    public enum waypointType { DefaultSpot, GrazingSpot, DrinkingSpot, NestingSpot };
+    public enum waypointType { DefaultSpot, GrazingSpot, DrinkingSpot, NestingSpot, CarnivoreNestingSpot };
     public GameObject gameObject;
     public waypointType type;
 }
@@ -28,13 +28,11 @@ public class WaypointsController : MonoBehaviour
     public Link[] links;
     public Graph graph = new Graph();
     
+
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void Start()
-    {
+        
         if (waypoints.Length <= 0) return;
         
         foreach (Waypoint waypoint in waypoints)

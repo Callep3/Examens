@@ -19,6 +19,7 @@ public class Roaming : IState
     private int currentWP = 0;
     private Graph graph;
     private CreatureStats currentNeed;
+    private List<Node> pathList = new List<Node>();
     
     public Roaming(GameObject gameObject, StateMachine stateMachine)
     {
@@ -48,10 +49,6 @@ public class Roaming : IState
         
         switch (currentNeed)
         {
-            case CreatureStats.none:
-                GoTo(Waypoint.waypointType.NestingSpot);
-                break;
-            
             case CreatureStats.food:
                 if (creatureCharacteristics.herbivore)
                 {
@@ -63,9 +60,19 @@ public class Roaming : IState
                     switch (Random.Range(0, 2))
                     {
                         case 0:
+                            if (creatureCharacteristics.previousWaypointType == Waypoint.waypointType.GrazingSpot)
+                            {
+                                DecideNeed();
+                                break;
+                            }
                             GoTo(Waypoint.waypointType.GrazingSpot);
                             break;
                         case 1:
+                            if (creatureCharacteristics.previousWaypointType == Waypoint.waypointType.DrinkingSpot)
+                            {
+                                DecideNeed();
+                                break;
+                            }
                             GoTo(Waypoint.waypointType.DrinkingSpot);
                             break;
                     }
@@ -77,11 +84,19 @@ public class Roaming : IState
                 break;
             
             case CreatureStats.energy:
-                GoTo(Waypoint.waypointType.NestingSpot);
+                if (creatureCharacteristics.herbivore)
+                    GoTo(Waypoint.waypointType.NestingSpot);
+
+                if (creatureCharacteristics.carnivore)
+                    GoTo(Waypoint.waypointType.CarnivoreNestingSpot);
                 break;
             
             case CreatureStats.health:
-                GoTo(Waypoint.waypointType.NestingSpot);
+                if (creatureCharacteristics.herbivore)
+                    GoTo(Waypoint.waypointType.NestingSpot);
+
+                if (creatureCharacteristics.carnivore)
+                    GoTo(Waypoint.waypointType.CarnivoreNestingSpot);
                 break;
             
             default:
@@ -91,13 +106,15 @@ public class Roaming : IState
 
     private void GoTo(GameObject waypoint)
     {
-        graph.AStar(currentNode, waypoint);
+        pathList = graph.AStar(currentNode, waypoint);
         currentWP = 0;
     }
 
     private void GoTo(Waypoint.waypointType type)
     {
-        graph.AStar(currentNode, type);
+        pathList = graph.AStar(currentNode, type);
+        creatureCharacteristics.previousWaypointType = type;
+        creatureMovement.targetPosition = graph.getPathPoint(currentWP, pathList).transform.position;
         currentWP = 0;
     }
 
@@ -105,37 +122,34 @@ public class Roaming : IState
     {
         IncrementWP();
         UpdateStats();
+        CheckForSounds();
+        CheckForPrey();
     }
 
     private void IncrementWP()
     {
         if (!creatureMovement.CheckProximity()) return;
-        
-        if (graph.getPathLength() == 0 || currentWP == graph.getPathLength())
+
+        if (graph.getPathLength(pathList) == 0 || currentWP == graph.getPathLength(pathList))
         {
             ChangeState();
             return;
         }
 
-        currentNode = graph.getPathPoint(currentWP);
+        currentNode = graph.getPathPoint(currentWP, pathList);
         
         currentWP++;
 
-        if (currentWP < graph.getPathLength())
+        if (currentWP < graph.getPathLength(pathList))
         {
-            creatureMovement.targetPosition = graph.getPathPoint(currentWP).transform.position;
+            creatureMovement.targetPosition = graph.getPathPoint(currentWP, pathList).transform.position;
         }
     }
 
     private void ChangeState()
     {
-        Debug.Log("Changing states");
         switch (currentNeed)
         {
-            case CreatureStats.none:
-                stateMachine.ChangeState(new Roaming(gameObject, stateMachine));
-                break;
-            
             case CreatureStats.food:
                 if (creatureCharacteristics.herbivore)
                 {
@@ -176,6 +190,32 @@ public class Roaming : IState
 
         if (creatureCharacteristics.food <= 0 || creatureCharacteristics.water <= 0)
             creatureCharacteristics.RemoveHealth(1f);
+    }
+    
+    private void CheckForSounds()
+    {
+        if (creatureHearing.checkInterval > Time.time) return;
+        creatureHearing.checkInterval = Time.time + creatureHearing.checkCooldown;
+
+        if (creatureHearing.heardHostileTargets.Count > 0)
+            stateMachine.ChangeState(new Alerted(gameObject, stateMachine, this));
+    }
+    
+    private void CheckForPrey()
+    {
+        if (!creatureCharacteristics.carnivore) return;
+        if (creatureSight.checkInterval > Time.time) return;
+        creatureSight.checkInterval = Time.time + creatureSight.checkCooldown;
+        if (creatureSight.visibleTargets.Count < 0) return;
+
+        foreach (var target in creatureSight.visibleTargets)
+        {
+            var targetCharacteristics = target.GetComponent<CreatureCharacteristics>();
+            if (targetCharacteristics.creatureTypeName == creatureCharacteristics.creatureTypeName) return;
+            if (targetCharacteristics.baseThreatLevel >= creatureCharacteristics.baseThreatLevel) return;
+            
+            stateMachine.ChangeState(new Hunting(target, gameObject, stateMachine));
+        }
     }
 
     public void PhysicsUpdate()

@@ -9,6 +9,8 @@ TagManager:
   - GrazingZone
   - DrinkingZone
   - NestingZone
+  - Carnivore
+  - Herbivore
   layers:
   - Default
   - TransparentFX

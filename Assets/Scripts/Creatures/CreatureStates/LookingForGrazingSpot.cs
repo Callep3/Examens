@@ -41,6 +41,7 @@ public class LookingForGrazingSpot : IState
     {
         UpdateStats();
         StartGrazing();
+        CheckForSounds();
     }
 
     private void StartGrazing()
@@ -61,6 +62,15 @@ public class LookingForGrazingSpot : IState
 
         if (creatureCharacteristics.food <= 0 || creatureCharacteristics.water <= 0)
             creatureCharacteristics.RemoveHealth(1f);
+    }
+    
+    private void CheckForSounds()
+    {
+        if (creatureHearing.checkInterval > Time.time) return;
+        creatureHearing.checkInterval = Time.time + creatureHearing.checkCooldown;
+
+        if (creatureHearing.heardHostileTargets.Count > 0)
+            stateMachine.ChangeState(new Alerted(gameObject, stateMachine, this));
     }
 
     public void PhysicsUpdate()

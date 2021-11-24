@@ -10,12 +10,13 @@ public class CreatureSight : MonoBehaviour
     public LayerMask targetMask;
     public float viewRadius;
     [Range(0, 360)] public float viewAngle;
-    
-    public List<Transform> visibleTargets = new List<Transform>();
+    public float checkInterval;
+    public float checkCooldown = 0.2f;
 
     [Header("Debug")]
     public CreatureMovement creatureMovement;
     public bool sleeping;
+    public List<Transform> visibleTargets = new List<Transform>();
 
     private void Start()
     {

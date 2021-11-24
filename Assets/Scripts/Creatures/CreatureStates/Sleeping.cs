@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Sleeping : IState
 {
@@ -11,6 +13,8 @@ public class Sleeping : IState
     private readonly CreatureHearing creatureHearing;
     private readonly CreatureSight creatureSight;
     private readonly CreatureCharacteristics creatureCharacteristics;
+
+    private float spawn;
 
     public Sleeping(GameObject gameObject, StateMachine stateMachine)
     {
@@ -32,17 +36,26 @@ public class Sleeping : IState
 
     public void Update()
     {
+        JitterFix();
         CheckForSounds();
         UpdateStats();
     }
 
     private void Propagate()
     {
+        if (creatureCharacteristics.gender != Gender.female) return;
         if (creatureCharacteristics.food < creatureCharacteristics.maxFood * 0.8f) return;
-        if (creatureCharacteristics.energy < creatureCharacteristics.maxEnergy * 0.8f) return;
-        
-        var zone = Physics2D.OverlapPoint(gameObject.transform.position, 1 << 3);
-        var creaturesInZone = Physics2D.OverlapCircleAll(zone.transform.position, zone.transform.localScale.x, 1 << 9);
+
+        List<GameObject> nestingZones = new List<GameObject>();
+        var zones = Physics2D.OverlapPointAll(gameObject.transform.position, 1 << 3);
+        foreach (var zone in zones)
+        {
+            if (!zone.CompareTag("NestingZone")) continue;
+            
+            nestingZones.Add(zone.gameObject);
+        }
+        var nestingZone = nestingZones[Random.Range(0, nestingZones.Count)];
+        var creaturesInZone = Physics2D.OverlapCircleAll(nestingZone.transform.position, nestingZone.transform.localScale.x, 1 << 9);
 
         foreach (var creature in creaturesInZone)
         {
@@ -51,13 +64,24 @@ public class Sleeping : IState
             if (characteristics.creatureTypeName != creatureCharacteristics.creatureTypeName) continue;
             if (characteristics.gender == creatureCharacteristics.gender) continue;
 
-            var baby = ObjectPooler.Instance.GetPooledObject("Creature");
+            var baby = ObjectPooler.Instance.GetPooledObject(creatureCharacteristics.carnivore ? "Carnivore" : "Herbivore");
             baby.transform.position = gameObject.transform.position;
+            baby.GetComponent<CreatureCharacteristics>().SetVariables(creatureCharacteristics);
+            if (creatureCharacteristics.carnivore)
+                UIController.Instance.ChangeNumberOfCarnivores(1);
+            else if (creatureCharacteristics.herbivore)
+                UIController.Instance.ChangeNumberOfHerbivores(1);
             baby.SetActive(true);
-
-            creatureCharacteristics.food -= creatureCharacteristics.maxFood / 2;
-            creatureCharacteristics.energy -= creatureCharacteristics.maxEnergy / 2;
+            
+            creatureCharacteristics.RemoveFood(creatureCharacteristics.maxFood / 2);
+            break;
         }
+    }
+    
+    private void JitterFix()
+    {
+        if (creatureMovement.CheckProximity())
+            creatureMovement.SetTargetPosition(gameObject.transform.position);
     }
 
     private void CheckForSounds()
@@ -65,7 +89,7 @@ public class Sleeping : IState
         if (creatureHearing.checkInterval > Time.time) return;
         creatureHearing.checkInterval = Time.time + creatureHearing.checkCooldown;
 
-        if (creatureHearing.heardTargets.Count > 0)
+        if (creatureHearing.heardHostileTargets.Count > 0)
             stateMachine.ChangeState(new Alerted(gameObject, stateMachine, this));
     }
 

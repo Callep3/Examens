@@ -6,7 +6,6 @@ public class Graph
 {
 	List<Edge>	edges = new List<Edge>();
 	List<Node>	nodes = new List<Node>();
-	List<Node> pathList = new List<Node>();   
 	
 	public Graph(){}
 	
@@ -73,17 +72,17 @@ public class Graph
 		return nodeToReturn;
 	} 
 	
-	public int getPathLength()
+	public int getPathLength(List<Node> pathList)
 	{
 		return pathList.Count;	
 	}
 	
-	public GameObject getPathPoint(int index)
+	public GameObject getPathPoint(int index, List<Node> pathList)
 	{
 		return pathList[index].id;
 	}
 	
-	public void printPath()
+	public void printPath(List<Node> pathList)
 	{
 		foreach(Node n in pathList)
 		{	
@@ -91,14 +90,14 @@ public class Graph
 		}
 	}
 
-	public bool AStar(GameObject startId, GameObject endId)
+	public List<Node> AStar(GameObject startId, GameObject endId)
 	{
 	  	Node start = findNode(startId);
 	  	Node end = findNode(endId);
 	  
 	  	if(start == null || end == null)
 	  	{
-	  		return false;	
+	  		return null;	
 	  	}
 	  	
 	  	List<Node>	open = new List<Node>();
@@ -117,8 +116,7 @@ public class Graph
 			Node thisnode = open[i];
 			if(thisnode.id == endId)  //path found
 			{
-				reconstructPath(start,end);
-				return true;	
+				return reconstructPath(start,end);	
 			} 	
 			
 			open.RemoveAt(i);
@@ -158,17 +156,17 @@ public class Graph
   	
 	  	}
 		
-		return false;	
+		return null;	
 	}
 	
-	public bool AStar(GameObject startId, Waypoint.waypointType endType)
+	public List<Node> AStar(GameObject startId, Waypoint.waypointType endType)
 	{
 		Node start = findNode(startId);
 		Node end = findClosestNodeOfType(startId, endType);
 	  
 		if(start == null || end == null)
 		{
-			return false;	
+			return null;	
 		}
 	  	
 		List<Node>	open = new List<Node>();
@@ -187,8 +185,7 @@ public class Graph
 			Node thisnode = open[i];
 			if(thisnode.id == end.id)  //path found
 			{
-				reconstructPath(start,end);
-				return true;	
+				return reconstructPath(start,end);
 			} 	
 			
 			open.RemoveAt(i);
@@ -228,11 +225,12 @@ public class Graph
   	
 		}
 		
-		return false;	
+		return null;	
 	}
 	
-	public void reconstructPath(Node startId, Node endId)
+	public List<Node> reconstructPath(Node startId, Node endId)
 	{
+		List<Node> pathList = new List<Node>(); 
 		pathList.Clear();
 		pathList.Add(endId);
 		
@@ -243,6 +241,8 @@ public class Graph
 			p = p.cameFrom;	
 		}
 		pathList.Insert(0,startId);
+
+		return pathList;
 	}
 	
     float distance(Node a, Node b)

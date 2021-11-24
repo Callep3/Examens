@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8313062066819160181}
   - component: {fileID: 8313062066819160182}
   - component: {fileID: 2109766995}
+  - component: {fileID: 951827994}
+  - component: {fileID: 615933557}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -46,11 +48,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   itemsToPool:
-  - amountToPool: 5
-    objectToPool: {fileID: 7687364152048832402, guid: 9949749f2c14be446add21659cabcbe5, type: 3}
-    shouldExpand: 1
   - amountToPool: 10
     objectToPool: {fileID: 3280336222436681893, guid: 350b8b52dc63e7846bd2e29c5f183ccc, type: 3}
+    shouldExpand: 1
+  - amountToPool: 5
+    objectToPool: {fileID: 7687364152048832402, guid: a88c2a2bceffcd049a085115d8cea4ce, type: 3}
+    shouldExpand: 1
+  - amountToPool: 5
+    objectToPool: {fileID: 7687364152048832402, guid: ddb1de8a9f679854582a626b9c474025, type: 3}
     shouldExpand: 1
 --- !u!114 &2109766995
 MonoBehaviour:
@@ -86,7 +91,7 @@ MonoBehaviour:
   - gameObject: {fileID: 0}
     type: 0
   - gameObject: {fileID: 0}
-    type: 3
+    type: 4
   - gameObject: {fileID: 0}
     type: 0
   - gameObject: {fileID: 0}
@@ -216,3 +221,62 @@ MonoBehaviour:
   - node1: {fileID: 0}
     node2: {fileID: 0}
     dir: 1
+--- !u!114 &951827994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8313062066819160183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79196d534e630b74e8ce13b6e8c194e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  increaseSpeed:
+    m_Name: Increase Speed
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8fbee460-b13d-47c4-9b46-d2016f25f9d1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 51ac05a5-b8fd-419d-9405-27494334f202
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Increase Speed
+      m_Flags: 0
+  decreaseSpeed:
+    m_Name: Decrease Speed
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 36fa81e5-54a8-433e-9e3f-2e1c8fb59897
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 46404692-e8d4-4487-8a5c-22c60e63c211
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Decrease Speed
+      m_Flags: 0
+--- !u!114 &615933557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8313062066819160183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e57237b2ab6a442ba4ea48d46be395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carnivoreText: {fileID: 0}
+  herbivoreText: {fileID: 0}
+  speedText: {fileID: 0}

@@ -61,10 +61,10 @@ public class Alerted : IState
     {
         var positionToLookTowards = gameObject.transform.position;
 
-        foreach (var sound in creatureHearing.heardTargets)
+        foreach (var sound in creatureHearing.heardHostileTargets)
             positionToLookTowards = sound.position;
 
-        if (creatureHearing.heardTargets.Count <= 0) return;
+        if (creatureHearing.heardHostileTargets.Count <= 0) return;
         
         alertedDuration += Time.deltaTime;
         creatureMovement.LookTowardsPosition(positionToLookTowards);

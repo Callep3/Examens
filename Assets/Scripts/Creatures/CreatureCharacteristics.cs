@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public enum Gender
 {
@@ -12,7 +13,6 @@ public enum Gender
 
 public enum CreatureStats
 {
-    none,
     food,
     water,
     energy,
@@ -50,6 +50,7 @@ public class CreatureCharacteristics : MonoBehaviour
 
     [NonSerialized] public float statUpdateInterval;
     [NonSerialized] public float statUpdateCooldown = 0.5f;
+    [NonSerialized] public Waypoint.waypointType previousWaypointType;
 
     private void Start()
     {
@@ -57,6 +58,17 @@ public class CreatureCharacteristics : MonoBehaviour
         water = maxWater;
         energy = maxEnergy;
         health = maxHealth;
+
+        if (!herbivore) return;
+        switch (Random.Range(0, 2))
+        {
+            case 0:
+                gender = Gender.male;
+                break;
+            case 1:
+                gender = Gender.female;
+                break;
+        }
     }
     
     //TODO: Add a bool return function for deciding which threat is greater
@@ -91,7 +103,7 @@ public class CreatureCharacteristics : MonoBehaviour
             return CreatureStats.health;
         }
 
-        return CreatureStats.none;
+        return CreatureStats.food;
     }
 
     #region Food
@@ -162,7 +174,46 @@ public class CreatureCharacteristics : MonoBehaviour
         amount = Mathf.Abs(amount);
         health -= amount;
         health = Mathf.Clamp(health, 0, maxHealth);
+
+        if (health > 0) return;
+        if (carnivore)
+            UIController.Instance.ChangeNumberOfCarnivores(-1);
+        else if (herbivore)
+            UIController.Instance.ChangeNumberOfHerbivores(-1);
+        gameObject.SetActive(false);
     }
 
     #endregion
+
+    public void SetVariables(CreatureCharacteristics creatureCharacteristics)
+    {
+        creatureTypeName = creatureCharacteristics.creatureTypeName;
+        baseThreatLevel = creatureCharacteristics.baseThreatLevel;
+        switch (Random.Range(0, 2))
+        {
+            case 0:
+                gender = Gender.male;
+                break;
+            case 1:
+                gender = Gender.female;
+                break;
+        }
+        maxFood = creatureCharacteristics.maxFood;
+        food = maxFood;
+        eatingSpeed = creatureCharacteristics.eatingSpeed;
+        hungerRate = creatureCharacteristics.hungerRate;
+        maxWater = creatureCharacteristics.maxWater;
+        water = maxWater;
+        drinkingSpeed = creatureCharacteristics.drinkingSpeed;
+        thirstRate = creatureCharacteristics.thirstRate;
+        maxEnergy = creatureCharacteristics.maxEnergy;
+        energy = maxWater;
+        restingSpeed = creatureCharacteristics.restingSpeed;
+        drainRate = creatureCharacteristics.drainRate;
+        maxHealth = creatureCharacteristics.maxHealth;
+        health = maxHealth;
+        herbivore = creatureCharacteristics.herbivore;
+        carnivore = creatureCharacteristics.carnivore;
+        hearingSensitivity = creatureCharacteristics.hearingSensitivity;
+    }
 }

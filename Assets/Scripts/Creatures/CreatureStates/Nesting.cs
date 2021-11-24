@@ -27,11 +27,13 @@ public class Nesting : IState
     {
         //Set trigger for Walking animation
         creatureBehaviour.currentState = "Nesting";
+
         PickASpot();
     }
 
     public void Update()
     {
+        JitterFix();
         CheckForSounds();
         CheckToRest();
         UpdateStats();
@@ -61,19 +63,25 @@ public class Nesting : IState
         creatureMovement.SetTargetPosition(nestingZone.transform.position + newSpotOffset);
     }
 
+    private void JitterFix()
+    {
+        if (creatureMovement.CheckProximity())
+            creatureMovement.SetTargetPosition(gameObject.transform.position);
+    }
+
     private void CheckForSounds()
     {
         if (creatureHearing.checkInterval > Time.time) return;
         creatureHearing.checkInterval = Time.time + creatureHearing.checkCooldown;
 
-        if (creatureHearing.heardTargets.Count > 0)
+        if (creatureHearing.heardHostileTargets.Count > 0)
             stateMachine.ChangeState(new Alerted(gameObject, stateMachine, this));
     }
 
     private void CheckToRest()
     {
         if (creatureCharacteristics.health < creatureCharacteristics.maxHealth ||
-            creatureCharacteristics.energy / creatureCharacteristics.maxEnergy < 0.5f)
+            creatureCharacteristics.GetLowestStat() == CreatureStats.energy)
             stateMachine.ChangeState(new Sleeping(gameObject, stateMachine));
         else
             stateMachine.ChangeState(new Roaming(gameObject, stateMachine));

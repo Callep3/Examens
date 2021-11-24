@@ -38,6 +38,6 @@ public class CameraController : MonoBehaviour
     private void CameraZoom(InputAction.CallbackContext ctx)
     {
         gameCamera.orthographicSize -= ctx.ReadValue<float>() * 0.003f;
-        gameCamera.orthographicSize = Mathf.Clamp(gameCamera.orthographicSize, 1f, 15f);
+        gameCamera.orthographicSize = Mathf.Clamp(gameCamera.orthographicSize, 1f, 20f);
     }
 }

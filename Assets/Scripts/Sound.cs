@@ -8,6 +8,8 @@ public class Sound : MonoBehaviour
     [Tooltip("Volume equals the amount of unity units from the creature the sound will be heard when the creature has a default sensitivity of 1")]
     public float volume;
     public float lifespan;
+    public bool hostile;
+    public string parent;
 
     private void OnEnable()
     {
