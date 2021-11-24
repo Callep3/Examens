@@ -34,7 +34,7 @@ public class Nesting : IState
     public void Update()
     {
         JitterFix();
-        CheckForSounds();
+        //CheckForSounds();
         CheckToRest();
         UpdateStats();
     }
